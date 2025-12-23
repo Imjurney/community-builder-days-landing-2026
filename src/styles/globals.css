@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/* ============================================
+   폰트 로딩 (@font-face)
+   ============================================ */
+
+/* Amazon Ember Duospace 폰트 로딩 */
+@font-face {
+  font-family: "Amazon Ember Duospace";
+  src: url("/amazon-ember/Amazon Ember Duospace.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amazon Ember Duospace";
+  src: url("/amazon-ember/Amazon Ember Duospace Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  background: #000;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* ============================================
+     메인 컬러 설정 (HSL 형식: Hue Saturation Lightness)
+     ============================================ */
+  /* 🎨 메인 브랜드 컬러 - 보라색 (266° 92% 70%) */
+  --primary: 266 92% 70%;
+  --primary-fg: 222 47% 10%;
+  --ring: 266 92% 70%;
+
+  /* 다른 컬러 예시:
+     파란색: 217 91% 60%
+     초록색: 142 76% 36%
+     빨간색: 0 84% 60%
+     주황색: 25 95% 53%
+     핑크색: 330 81% 60%
+  */
+
+  /* ============================================
+     배경 및 텍스트 컬러
+     ============================================ */
+  --bg: 222 45% 7%; /* 배경색 (어두운 남색) */
+  --fg: 210 40% 98%; /* 텍스트색 (밝은 회색) */
+
+  /* 카드 컬러 */
+  --card: 222 45% 10%; /* 카드 배경색 */
+  --card-fg: 210 40% 98%; /* 카드 텍스트색 */
+
+  /* 보조 컬러 */
+  --muted: 222 35% 14%; /* 흐린 배경색 */
+  --muted-fg: 215 20% 75%; /* 흐린 텍스트색 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: hsl(var(--primary) / 0.25);
+}
+
+/* ============================================
+   타이포그래피 유틸리티 클래스
+   ============================================ */
+
+/* Korean/Large title1 */
+.text-large-title1 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px; /* 106.667% */
+  letter-spacing: -0.6px;
+}
+
+/* Korean/Title1 */
+.text-title1 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px; /* 150% */
+  letter-spacing: -0.48px;
+}
+
+/* Korean/Title2 */
+.text-title2 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 160% */
+  letter-spacing: -0.4px;
+}
+
+/* Korean/Body1 */
+.text-body1 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+/* English/Title3 */
+.text-english-title3 {
+  font-family: "Amazon Ember Duospace", "JetBrains Mono", "Fira Code",
+    "Consolas", "Monaco", monospace;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 150% */
+  letter-spacing: -1.2px;
+}
+
+/* Fancy/Large Title1 */
+.text-fancy-large-title1 {
+  font-family: var(--font-pixelify);
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 96px; /* 100% */
+}
+
+/* Fancy/Large Title2 */
+.text-fancy-large-title2 {
+  font-family: var(--font-pixelify);
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px; /* 125% */
+}
+
+/* Fancy/Title1 */
+.text-fancy-title1 {
+  font-family: var(--font-pixelify);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 150% */
+}
+
+/* Fancy/Subtitle1 */
+.text-fancy-subtitle1 {
+  font-family: var(--font-pixelify);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 140% */
+}
+
+/* Fancy/Body1 */
+.text-fancy-body1 {
+  font-family: var(--font-pixelify);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+/* ============================================
+   타이포그래피 유틸리티 클래스
+   ============================================ */
+
+/* Korean/Large title1 */
+.text-large-title1 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px; /* 106.667% */
+  letter-spacing: -0.6px;
+}
+
+/* Korean/Title1 */
+.text-title1 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px; /* 150% */
+  letter-spacing: -0.48px;
+}
+
+/* Korean/Title2 */
+.text-title2 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 160% */
+  letter-spacing: -0.4px;
+}
+
+/* Korean/Body1 */
+.text-body1 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+/* English/Title3 */
+.text-english-title3 {
+  font-family: "Amazon Ember Duospace", "JetBrains Mono", "Fira Code",
+    "Consolas", "Monaco", monospace;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 150% */
+  letter-spacing: -1.2px;
+}
+
+/* Fancy/Large Title1 */
+.text-fancy-large-title1 {
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 96px; /* 100% */
+}
+
+/* Fancy/Large Title2 */
+.text-fancy-large-title2 {
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px; /* 125% */
+}
+
+/* Fancy/Title1 */
+.text-fancy-title1 {
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 36px; /* 150% */
+}
+
+/* Fancy/Subtitle1 */
+.text-fancy-subtitle1 {
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; /* 140% */
+}
+
+/* Fancy/Body1 */
+.text-fancy-body1 {
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
