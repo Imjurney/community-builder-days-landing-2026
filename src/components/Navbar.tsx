@@ -1,15 +1,15 @@
-import { NAV_ITEMS } from "@/constants/navigation";
-import { textFancySubtitle1 } from "@/lib/utils";
+import { NAV_ITEMS } from '@/constants/navigation';
+import { textFancySubtitle1 } from '@/lib/utils';
 
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-black/25 backdrop-blur-[10px] h-[88px]">
-      <div className="flex w-[1440px] h-[88px] pl-8 pr-[376px] py-6 items-center gap-[145px] mx-auto">
+      <div className="flex w-full max-w-[1440px] h-[88px] pl-8 pr-[376px] py-6 items-center gap-[145px] mx-auto">
         <div className="flex items-center">
           <img
             src="/logo.svg"
             alt="Community Builder Days 2025"
-            className="h-10 w-auto"
+            className="h-10 w-50"
           />
         </div>
 
@@ -20,9 +20,8 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               className={textFancySubtitle1(
-                "text-white transition-colors hover:text-primary whitespace-nowrap"
-              )}
-            >
+                'text-white transition-colors hover:text-primary whitespace-nowrap'
+              )}>
               {item.label}
             </a>
           ))}

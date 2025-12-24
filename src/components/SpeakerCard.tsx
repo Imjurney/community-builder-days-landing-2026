@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-
+import { cn } from '@/lib/utils';
+import graphicImage from '@/assets/graphic.svg';
 interface SpeakerCardProps {
   name: string;
   title: string;
@@ -10,8 +10,6 @@ interface SpeakerCardProps {
 }
 
 // 그래픽 배경 이미지
-const graphicBackground =
-  "http://localhost:3845/assets/e7a20d1677975309eef315b8899656b5f265a0d5.svg";
 
 export default function SpeakerCard({
   name,
@@ -24,13 +22,16 @@ export default function SpeakerCard({
   return (
     <div
       className={cn(
-        "relative w-[332px] h-[322px] overflow-hidden group cursor-pointer",
+        'relative w-[332px] h-[322px] overflow-hidden group cursor-pointer',
         className
-      )}
-    >
+      )}>
       {/* 프로필 이미지 */}
-      <div className="absolute z-1 top-0 left-0 w-[332px] h-[332px]">
+      <div className="absolute z-1 top-0 left-0 w-[332px] h-[332px] bg-linear-to-br from-slate-700 to-slate-900">
         <img
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+          }}
           src={profileImage}
           alt={`${name} 프로필`}
           className="w-full h-full object-cover"
@@ -40,7 +41,7 @@ export default function SpeakerCard({
       {/* 그래픽 배경 - 호버 시 올라옴 */}
       <div className="absolute z-10 bottom-0 left-0 w-[332px] h-[192px] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
         <img
-          src={graphicBackground}
+          src={graphicImage}
           alt=""
           className="w-full h-full object-cover"
         />
@@ -49,7 +50,7 @@ export default function SpeakerCard({
             <h3 className="text-title1 text-white mb-1">{name}</h3>
             <p className="text-fancy-body1 text-white">{org}</p>
           </div>
-          <div className="w-4/5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+          <div className="mt-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
             <p className="text-title1 text-black leading-tight">{topic}</p>
           </div>
         </div>

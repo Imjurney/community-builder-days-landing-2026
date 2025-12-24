@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* ============================================
    폰트 로딩 (@font-face)
@@ -6,16 +6,16 @@
 
 /* Amazon Ember Duospace 폰트 로딩 */
 @font-face {
-  font-family: "Amazon Ember Duospace";
-  src: url("/amazon-ember/Amazon Ember Duospace.ttf") format("truetype");
+  font-family: 'Amazon Ember Duospace';
+  src: url('/amazon-ember/Amazon Ember Duospace.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Amazon Ember Duospace";
-  src: url("/amazon-ember/Amazon Ember Duospace Bold.ttf") format("truetype");
+  font-family: 'Amazon Ember Duospace';
+  src: url('/amazon-ember/Amazon Ember Duospace Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -34,8 +34,9 @@ main {
      메인 컬러 설정 (HSL 형식: Hue Saturation Lightness)
      ============================================ */
   /* 🎨 메인 브랜드 컬러 - 보라색 (266° 92% 70%) */
-  --primary: 266 92% 70%;
+  --primary: #703fff;
   --primary-fg: 222 47% 10%;
+  --secondary: #f90;
   --ring: 266 92% 70%;
 
   /* 다른 컬러 예시:
@@ -59,6 +60,16 @@ main {
   /* 보조 컬러 */
   --muted: 222 35% 14%; /* 흐린 배경색 */
   --muted-fg: 215 20% 75%; /* 흐린 텍스트색 */
+
+  /* ============================================
+     스케줄 트랙 컬러
+     ============================================ */
+  --track-1: var(--primary);
+  --track-2: var(--secondary);
+  --track-3: #ffffff;
+  --opacity-p020: rgba(112, 63, 255, 0.2);
+  --opacity-s020: rgba(255, 153, 0, 0.2);
+  --opacity-w020: rgba(255, 255, 255, 0.2);
 }
 
 html {
@@ -81,7 +92,7 @@ body {
 
 /* Korean/Large title1 */
 .text-large-title1 {
-  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 60px;
   font-style: normal;
@@ -92,7 +103,7 @@ body {
 
 /* Korean/Title1 */
 .text-title1 {
-  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 24px;
   font-style: normal;
@@ -103,7 +114,7 @@ body {
 
 /* Korean/Title2 */
 .text-title2 {
-  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 20px;
   font-style: normal;
@@ -114,7 +125,7 @@ body {
 
 /* Korean/Body1 */
 .text-body1 {
-  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -124,8 +135,8 @@ body {
 
 /* English/Title3 */
 .text-english-title3 {
-  font-family: "Amazon Ember Duospace", "JetBrains Mono", "Fira Code",
-    "Consolas", "Monaco", monospace;
+  font-family: 'Amazon Ember Duospace', 'JetBrains Mono', 'Fira Code',
+    'Consolas', 'Monaco', monospace;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -184,7 +195,7 @@ body {
 
 /* Korean/Large title1 */
 .text-large-title1 {
-  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 60px;
   font-style: normal;
@@ -195,7 +206,7 @@ body {
 
 /* Korean/Title1 */
 .text-title1 {
-  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 24px;
   font-style: normal;
@@ -206,7 +217,7 @@ body {
 
 /* Korean/Title2 */
 .text-title2 {
-  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 20px;
   font-style: normal;
@@ -217,7 +228,7 @@ body {
 
 /* Korean/Body1 */
 .text-body1 {
-  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -227,8 +238,8 @@ body {
 
 /* English/Title3 */
 .text-english-title3 {
-  font-family: "Amazon Ember Duospace", "JetBrains Mono", "Fira Code",
-    "Consolas", "Monaco", monospace;
+  font-family: 'Amazon Ember Duospace', 'JetBrains Mono', 'Fira Code',
+    'Consolas', 'Monaco', monospace;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -238,7 +249,7 @@ body {
 
 /* Fancy/Large Title1 */
 .text-fancy-large-title1 {
-  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
   font-size: 96px;
   font-style: normal;
   font-weight: 600;
@@ -247,7 +258,7 @@ body {
 
 /* Fancy/Large Title2 */
 .text-fancy-large-title2 {
-  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
   font-size: 48px;
   font-style: normal;
   font-weight: 400;
@@ -256,7 +267,7 @@ body {
 
 /* Fancy/Title1 */
 .text-fancy-title1 {
-  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -265,7 +276,7 @@ body {
 
 /* Fancy/Subtitle1 */
 .text-fancy-subtitle1 {
-  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -274,7 +285,7 @@ body {
 
 /* Fancy/Body1 */
 .text-fancy-body1 {
-  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
+  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
