@@ -21,6 +21,10 @@
   font-display: swap;
 }
 
+main {
+  @apply max-w-[1440px] mx-auto;
+}
+
 :root {
   background: #000;
   &::-webkit-scrollbar {

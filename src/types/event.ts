@@ -22,6 +22,7 @@ export type Speaker = {
   org: string;
   topic: string;
   bio: string;
+  profileImage: string;
 };
 
 export type ScheduleItem = {

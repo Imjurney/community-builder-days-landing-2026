@@ -1,4 +1,5 @@
 import React from "react";
+import gsap from "gsap";
 import {
   cnCustom,
   textFancyLargeTitle2,
@@ -119,9 +120,25 @@ type TimeUnitProps = {
 };
 
 const TimeUnit = React.memo(function TimeUnit({ value, label }: TimeUnitProps) {
+  const valueRef = React.useRef<HTMLSpanElement>(null);
+
+  React.useLayoutEffect(() => {
+    if (!valueRef.current) return;
+    const tween = gsap.fromTo(
+      valueRef.current,
+      { y: 10, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.25, ease: "power2.out" }
+    );
+    return () => {
+      tween.kill();
+    };
+  }, [value]);
+
   return (
     <div className="flex gap-1 items-center whitespace-nowrap">
-      <span className={textFancyLargeTitle2("text-white tabular-nums")}>{pad2(value)}</span>
+      <span ref={valueRef} className={textFancyLargeTitle2("text-white tabular-nums")}>
+        {pad2(value)}
+      </span>
       <span className={textFancySubtitle1("text-white/60")}>{label}</span>
     </div>
   );
