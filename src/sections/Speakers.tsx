@@ -22,8 +22,8 @@ export default function Speakers() {
     });
 
     // Community Builders와 Heroes 분리
-    const communityBuilders = SPEAKERS.filter((speaker) => speaker.org.includes('Community Builder'));
-    const heroes = SPEAKERS.filter((speaker) => speaker.org.includes('Hero'));
+    const communityBuilders = SPEAKERS.filter((speaker) => speaker.role === 'community-builder');
+    const heroes = SPEAKERS.filter((speaker) => speaker.role === 'hero');
 
     // Community Builders를 그룹으로 나누기 (4명씩)
     const speakersPerRow = 4;

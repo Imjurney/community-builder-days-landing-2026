@@ -26,6 +26,7 @@ export type Speaker = {
   org: string;
   bio: string;
   profileImage: string;
+  role: 'community-builder' | 'hero';
 };
 
 export type ScheduleItem = {
