@@ -96,7 +96,7 @@ export const EVENT: EventInfo = {
       line1: 'AWS community',
       line2: 'builders day KOREA',
     },
-    dateTime: '2026.01.24',
+    dateTime: '2026.01.24 (Sat)',
     location: 'CENTER FIELD, 18F, Seoul',
     ctaText: '참가하러 가기',
   },
