@@ -22,7 +22,7 @@ export default function Speakers() {
     });
 
     // Community Builders와 Heroes 분리
-    const communityBuilders = SPEAKERS.filter((speaker) => speaker.org.includes('CB'));
+    const communityBuilders = SPEAKERS.filter((speaker) => speaker.org.includes('Community Builder'));
     const heroes = SPEAKERS.filter((speaker) => speaker.org.includes('Hero'));
 
     // Community Builders를 그룹으로 나누기 (4명씩)
@@ -41,7 +41,7 @@ export default function Speakers() {
         <section
             id="speakers"
             className="py-16 xl:py-20 bg-bg border-t border-b border-[#41424a]">
-            <Container className="flex flex-col gap-8 xl:gap-24">
+            <Container className="flex flex-col gap-8 xl:gap-10">
                 {/* 섹션 제목 */}
                 <div className="text-center">
                     <img
@@ -63,7 +63,7 @@ export default function Speakers() {
                 {/* 스피커 캐로셀 */}
                 <div
                     ref={carouselRef}
-                    className="flex flex-col gap-8 xl:gap-24">
+                    className="flex flex-col gap-8 xl:gap-10">
                     {/* Community Builders 섹션 */}
                     <div className="flex flex-col gap-8 xl:gap-12">
                         <h3 className="text-2xl xl:text-3xl font-bold text-white text-center" style={{ fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
@@ -73,7 +73,7 @@ export default function Speakers() {
                             <Carousel
                                 key={rowIndex}
                                 className="pl-5 xl:pl-[115px] pr-5 xl:pr-[115px] border-t border-b border-zinc-700"
-                                itemWidth={300}
+                                itemWidth={332}
                                 gap={0}
                                 showOverlay={false}>
                                 {rowSpeakers.map((speaker) => {
@@ -99,7 +99,7 @@ export default function Speakers() {
                         </h3>
                         <Carousel
                             className="pl-5 xl:pl-[115px] pr-5 xl:pr-[115px] border-t border-b border-zinc-700"
-                            itemWidth={300}
+                            itemWidth={332}
                             gap={0}
                             showOverlay={false}>
                             {heroes.map((speaker) => {
