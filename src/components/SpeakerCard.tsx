@@ -31,11 +31,11 @@ export default function SpeakerCard({
         <div
             onClick={handleClick}
             className={cn(
-                'relative w-[260px] h-[260px] xl:w-[332px] xl:h-[322px] overflow-hidden group',
+                'relative w-[260px] h-[260px] xl:w-[300px] xl:h-[300px] overflow-hidden group',
                 className
             )}>
             {/* 프로필 이미지 */}
-            <div className="absolute z-1 top-0 left-0 w-[260px] h-[260px] xl:w-[332px] xl:h-[332px] bg-linear-to-br from-slate-700 to-slate-900">
+            <div className="absolute z-1 top-0 left-0 w-[260px] h-[260px] xl:w-[300px] xl:h-[300px] bg-linear-to-br from-slate-700 to-slate-900">
                 <img
                     onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -50,7 +50,7 @@ export default function SpeakerCard({
             {/* 그래픽 배경 - 모바일: 클릭 시, 데스크톱: 호버 시 올라옴 */}
             <div
                 className={cn(
-                    'absolute z-10 bottom-0 left-0 w-[260px] h-[260px] xl:w-[332px] xl:h-[332px] transform transition-transform duration-300 ease-out',
+                    'absolute z-10 bottom-0 left-0 w-[260px] h-[260px] xl:w-[300px] xl:h-[300px] transform transition-transform duration-300 ease-out',
                     'xl:translate-y-full xl:group-hover:translate-y-0',
                     isActive ? 'translate-y-0' : 'translate-y-full'
                 )}>
