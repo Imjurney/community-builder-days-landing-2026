@@ -57,9 +57,15 @@ export default function SpeakerCard({
                 <img
                     src={graphicImage}
                     alt=""
-                    className="w-full h-full object-cover opacity-90"
+                    className="w-full h-full object-cover opacity-70"
                 />
                 <div className="absolute inset-0 flex flex-col justify-end p-3 xl:p-6 pb-6 xl:pb-10 text-white pointer-events-none">
+                    {/* 상단: 이름과 직책 */}
+                    <div className="mb-2 xl:mb-3">
+                        <h3 className="text-title1 text-white">{name}</h3>
+                        <p className="text-fancy-body1 text-white">{org}</p>
+                    </div>
+
                     {/* 하단: 소개 */}
                     <div>
                         <p className="speaker-bio text-black min-h-20 max-h-[140px]">
