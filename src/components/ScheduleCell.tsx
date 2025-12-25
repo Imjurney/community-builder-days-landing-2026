@@ -1,4 +1,8 @@
-import { type ScheduleCell, type ScheduleTrackId } from '@/constants/schedule';
+import {
+  type ScheduleCell,
+  type ScheduleTrackId,
+  getSpeakerById,
+} from '@/constants/schedule';
 import { cn } from '@/lib/utils';
 
 const TRACK_CELL_STYLES: Record<
@@ -7,20 +11,18 @@ const TRACK_CELL_STYLES: Record<
 > = {
   track1: {
     label:
-      'text-title1 bg-[var(--opacity-p020)] text-white text-center max-w-[386.667px]',
+      'text-title bg-[var(--opacity-w020)] text-white text-center max-w-[386.667px]',
     session: 'bg-[var(--opacity-p020)] max-w-[386.667px]',
     tint: 'text-brand-primary text-white max-w-[386.667px]',
   },
   track2: {
     label:
-      'text-title1 bg-[var(--opacity-s020)] text-white text-center max-w-[386.667px]',
-    session:
-      'bg-[var(--opacity-s020)] text-white text-center max-w-[386.667px]',
+      'text-title1  bg-[var(--opacity-w020)]  text-white text-center max-w-[386.667px]',
+    session: 'bg-[var(--opacity-s020)] text-white  max-w-[386.667px]',
     tint: 'text-brand-secondary max-w-[386.667px] text-start',
   },
   track3: {
-    label:
-      'text-title1 bg-[var(--opacity-w020)] text-white text-center max-w-[386.667px]',
+    label: 'text-title1 bg-[var(--opacity-w020)] text-white  max-w-[386.667px]',
     session: 'bg-white/6 max-w-[386.667px]',
     tint: 'text-white/70 max-w-[386.667px]',
   },
@@ -48,27 +50,26 @@ export function ScheduleCell({ trackId, cell }: ScheduleCellProps) {
     return <td className={styles.label}>{cell.title}</td>;
   }
 
+  const speaker = getSpeakerById(cell.speakerId);
+  if (!speaker) return null;
+
   return (
-    <td className={cn('py-5 px-4 min-h-20', styles.session)}>
+    <td className={cn('py-4 px-4 min-h-20', styles.session)}>
       <div className={'flex items-center justify-between'}>
         <ul className="min-w-0 flex flex-col gap-1">
-          <li className="text-title2 text-white">{cell.title}</li>
-          {cell.speaker && (
-            <li className={cn('text-body1', styles.tint)}>{cell.speaker}</li>
-          )}
+          <li className="text-title2 text-white pr-2">{cell.title}</li>
+          <li className={cn('text-body1', styles.tint)}>
+            {speaker.name} · {speaker.org}
+          </li>
         </ul>
-        {cell.avatarSrc ? (
-          <img
-            width={64}
-            height={64}
-            src={cell.avatarSrc}
-            alt={`${cell.speaker} 프로필`}
-            className="object-cover"
-            loading="lazy"
-          />
-        ) : (
-          <div className="h-16 w-16 shrink-0 border border-white/10 bg-white/5"></div>
-        )}
+        <img
+          width={64}
+          height={64}
+          src={speaker.profileImage}
+          alt={`${speaker.name} 프로필`}
+          className="object-cover w-16 h-16 shrink-0"
+          loading="lazy"
+        />
       </div>
     </td>
   );

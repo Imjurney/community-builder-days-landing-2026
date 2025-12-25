@@ -1,7 +1,11 @@
 import Container from '@/components/Container';
 import { ScheduleRow } from '@/components/ScheduleRow';
 import { ScheduleTrackHeader } from '@/components/ScheduleTrackHeader';
-import { SCHEDULE_ROWS, SCHEDULE_TRACKS } from '@/constants/schedule';
+import {
+  SCHEDULE_ROWS,
+  SCHEDULE_TRACKS,
+  getSpeakerById,
+} from '@/constants/schedule';
 import { useFadeIn } from '@/lib/gsap';
 import title from '@/assets/sectionTitle/title_section2.svg';
 import titleSm from '@/assets/sectionTitle/title_section2_sm.svg';
@@ -10,6 +14,7 @@ import { useState, useRef, useEffect } from 'react';
 export default function Schedule() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showExpandButton, setShowExpandButton] = useState(false);
+  const [maxHeight, setMaxHeight] = useState<number | undefined>(408);
   const mobileScheduleRef = useRef<HTMLDivElement>(null);
 
   const gridRef = useFadeIn<HTMLTableElement>({
@@ -30,6 +35,17 @@ export default function Schedule() {
     window.addEventListener('resize', checkHeight);
     return () => window.removeEventListener('resize', checkHeight);
   }, []);
+
+  // 펼치기/접기 애니메이션
+  useEffect(() => {
+    if (mobileScheduleRef.current) {
+      if (isExpanded) {
+        setMaxHeight(mobileScheduleRef.current.scrollHeight);
+      } else {
+        setMaxHeight(408);
+      }
+    }
+  }, [isExpanded]);
 
   return (
     <section
@@ -84,13 +100,22 @@ export default function Schedule() {
         <div className="xl:hidden relative">
           <div
             ref={mobileScheduleRef}
-            className="flex flex-col w-full overflow-hidden transition-all duration-300"
+            className="flex flex-col w-full overflow-hidden"
             style={{
-              maxHeight: !isExpanded && showExpandButton ? '408px' : 'none',
+              maxHeight: showExpandButton ? `${maxHeight}px` : 'none',
+              transition: 'max-height 0.5s ease-in-out',
             }}>
             {SCHEDULE_ROWS.map((row) => {
               // full 타입 (전체 행)
               if ('full' in row) {
+                const bgColor = (() => {
+                  if (row.full.tone === 'muted') return 'rgba(255,255,255,0.1)';
+                  if (row.full.tone === 'break')
+                    return 'rgba(255,255,255,0.05)';
+                  if (row.full.tone === 'brand') return 'rgba(112,63,255,0.2)';
+                  return undefined;
+                })();
+
                 return (
                   <div
                     key={row.time}
@@ -103,10 +128,30 @@ export default function Schedule() {
                     </div>
 
                     {/* 전체 세션 */}
-                    <div className="flex-1 flex items-center justify-center py-5 px-4">
-                      <p className="text-title2 text-white text-center">
-                        {row.full.title}
-                      </p>
+                    <div
+                      className="flex-1 flex items-center justify-center py-5 px-4"
+                      style={{ backgroundColor: bgColor }}>
+                      {row.full.speakerId ? (
+                        (() => {
+                          const speaker = getSpeakerById(row.full.speakerId);
+                          if (!speaker) return null;
+
+                          return (
+                            <div className="flex flex-col gap-1 w-full">
+                              <p className="text-body1 text-white">
+                                {row.full.title}
+                              </p>
+                              <p className="text-[12px] leading-[20px] text-white/70">
+                                {speaker.name} · {speaker.org}
+                              </p>
+                            </div>
+                          );
+                        })()
+                      ) : (
+                        <p className="text-title2 text-white text-center">
+                          {row.full.title}
+                        </p>
+                      )}
                     </div>
                   </div>
                 );
@@ -138,25 +183,35 @@ export default function Schedule() {
                         return 'rgba(255,255,255,0.2)';
                       })();
 
-                      return (
-                        <div
-                          key={track.id}
-                          className="flex items-center justify-center py-3 px-4 border-b border-brand-stroke last:border-b-0"
-                          style={{ backgroundColor: bgColor }}>
-                          {cell.kind === 'session' && cell.speaker ? (
+                      if (cell.kind === 'session') {
+                        const speaker = getSpeakerById(cell.speakerId);
+                        if (!speaker) return null;
+
+                        return (
+                          <div
+                            key={track.id}
+                            className="flex items-center justify-center py-3 px-4 border-b border-brand-stroke last:border-b-0"
+                            style={{ backgroundColor: bgColor }}>
                             <div className="flex flex-col gap-1 w-full">
                               <p className="text-body1 text-white">
                                 {cell.title}
                               </p>
                               <p className="text-[12px] leading-[20px] text-white">
-                                {cell.speaker}
+                                {speaker.name} · {speaker.org}
                               </p>
                             </div>
-                          ) : (
-                            <p className="text-body1 text-white text-center">
-                              {cell.title}
-                            </p>
-                          )}
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <div
+                          key={track.id}
+                          className="flex items-center justify-center py-3 px-4 border-b border-brand-stroke last:border-b-0"
+                          style={{ backgroundColor: bgColor }}>
+                          <p className="text-body1 text-white text-center">
+                            {cell.title}
+                          </p>
                         </div>
                       );
                     })}
@@ -179,7 +234,7 @@ export default function Schedule() {
 
           {/* 펼쳐보기 버튼 */}
           {showExpandButton && (
-            <div className="pt-8 px-5">
+            <div className=" px-5">
               <button
                 type="button"
                 onClick={() => setIsExpanded(!isExpanded)}
