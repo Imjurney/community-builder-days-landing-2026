@@ -390,6 +390,42 @@ button {
   }
 }
 
+/* FAQ List Title - Responsive */
+.faq-list-title {
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+@media (min-width: 1240px) {
+  .faq-list-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px; /* 150% */
+    letter-spacing: -0.48px;
+  }
+}
+
+/* Speaker Bio - Responsive */
+.speaker-bio {
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+}
+
+@media (min-width: 1240px) {
+  .speaker-bio {
+    font-size: 16px;
+    line-height: 24px; /* 150% */
+  }
+}
+
 /* ============================================
    스크롤바 숨기기
    ============================================ */

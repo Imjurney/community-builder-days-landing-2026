@@ -5,8 +5,11 @@ import { SPEAKERS } from '@/constants/speakers';
 import { useSlideUp, useFadeIn } from '@/lib/gsap';
 import title from '@/assets/sectionTitle/title_section3.svg';
 import titleSm from '@/assets/sectionTitle/title_section3_sm.svg';
+import { useState } from 'react';
 
 export default function Speakers() {
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
   const titleRef = useSlideUp<HTMLHeadingElement>({
     duration: 1,
     delay: 0.2,
@@ -22,11 +25,16 @@ export default function Speakers() {
   const firstRowSpeakers = SPEAKERS.slice(0, midPoint);
   const secondRowSpeakers = SPEAKERS.slice(midPoint);
 
+  const handleCardClick = (cardId: string) => {
+    // 같은 카드를 클릭하면 토글, 다른 카드를 클릭하면 해당 카드 열기
+    setActiveCardId((prev) => (prev === cardId ? null : cardId));
+  };
+
   return (
     <section
       id="speakers"
-      className="py-20 bg-bg border-t border-b border-[#41424a]">
-      <Container className="flex flex-col gap-24">
+      className="py-16 xl:py-20 bg-bg border-t border-b border-[#41424a]">
+      <Container className="flex flex-col gap-8 xl:gap-24">
         {/* 섹션 제목 */}
         <div className="text-center">
           <img
@@ -48,10 +56,10 @@ export default function Speakers() {
         {/* 스피커 캐로셀 */}
         <div
           ref={carouselRef}
-          className="flex flex-col gap-24">
+          className="flex flex-col gap-8 xl:gap-24">
           {/* 첫 번째 줄 */}
           <Carousel
-            className="pl-[115px] border-t border-b border-zinc-700"
+            className="pl-5 xl:pl-[115px] border-t border-b border-zinc-700"
             itemWidth={332}
             gap={0}
             showOverlay={true}>
@@ -59,13 +67,15 @@ export default function Speakers() {
               <SpeakerCard
                 key={speaker.id}
                 {...speaker}
+                isActive={activeCardId === speaker.id}
+                onCardClick={handleCardClick}
               />
             ))}
           </Carousel>
 
           {/* 두 번째 줄 */}
           <Carousel
-            className="pl-[115px] border-t border-b border-zinc-700"
+            className="pl-5 xl:pl-[115px] border-t border-b border-zinc-700"
             itemWidth={332}
             gap={0}
             showOverlay={true}>
@@ -73,6 +83,8 @@ export default function Speakers() {
               <SpeakerCard
                 key={speaker.id}
                 {...speaker}
+                isActive={activeCardId === speaker.id}
+                onCardClick={handleCardClick}
               />
             ))}
           </Carousel>

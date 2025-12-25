@@ -41,41 +41,45 @@ export default function Venue() {
           alt="오시는 길"
         />
         <img
-          className="ml-auto xl:hidden block"
+          width={360}
+          height={242}
+          className="xl:hidden block w-full"
           src={titleSm}
           alt="오시는 길"
         />
 
-        <div className="flex gap-0">
+        <div className="flex flex-col-reverse lg:flex-row gap-0">
           {/* 지도 */}
           <div
             ref={mapRef}
-            className="flex-1 border-r border-brand-stroke">
+            className="w-full lg:flex-1 lg:border-r">
             <img
               width={616}
               height={416}
               src={mapImage}
               alt="오시는 길 지도"
-              className="w-full h-full hidden xl:block"
+              className="w-full h-auto hidden xl:block"
             />
             <img
+              width={360}
+              height={200}
               src={mapImageSm}
               alt="오시는 길 지도"
-              className="w-full h-full xl:hidden block"
+              className="w-full h-auto xl:hidden block"
             />
           </div>
 
           {/* 정보 */}
           <div
             ref={contentRef}
-            className="flex flex-col gap-16 justify-center px-14 py-18 w-[545px]">
+            className="flex flex-col gap-6 xl:gap-16 justify-center px-5 xl:px-12 py-8 xl:py-18 w-full lg:w-[545px]">
             {/* 장소 정보 */}
-            <div className="flex justify-between items-end w-full">
+            <div className="flex flex-col gap-6 xl:flex-row justify-between xl:items-end w-full xl:gap-0">
               <div>
                 <h3 className="text-fancy-large-title2 text-white">
                   Center Field
                 </h3>
-                <div className="flex items-start justify-between. mt-[3px]">
+                <div className="flex items-start justify-between mt-[3px]">
                   <div className="text-title2 text-white">
                     <p>{VENUE_DATA.address}</p>
                     <p>{VENUE_DATA.building}</p>
@@ -87,7 +91,7 @@ export default function Venue() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-size="medium"
-                className="px-3.5 py-2.5 bg-violet-600/60 rounded-2xl cursor-pointer backdrop-blur-[5px] inline-flex justify-center items-center hover:bg-violet-600/80 transition-colors">
+                className="w-fit px-3.5 py-2.5 bg-violet-600/60 rounded-2xl cursor-pointer backdrop-blur-[5px] inline-flex justify-center items-center hover:bg-violet-600/80 transition-colors">
                 <span className="text-body1 text-white">구글 지도 보기</span>
               </a>
             </div>

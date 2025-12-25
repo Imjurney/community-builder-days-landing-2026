@@ -24,6 +24,24 @@ export default function Carousel({
   const [isAtStart, setIsAtStart] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
 
+  // 반응형 itemWidth 계산
+  const getItemWidth = useCallback(() => {
+    if (typeof window === 'undefined') return itemWidth;
+    return window.innerWidth < 1240 ? 260 : itemWidth;
+  }, [itemWidth]);
+
+  const [currentItemWidth, setCurrentItemWidth] = useState(getItemWidth());
+
+  // 윈도우 리사이즈 시 itemWidth 업데이트
+  useEffect(() => {
+    const handleResize = () => {
+      setCurrentItemWidth(getItemWidth());
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [getItemWidth]);
+
   const handleDragEnd = useCallback(() => {
     // 드래그 종료 시 특별한 처리 없음
   }, []);
@@ -31,17 +49,17 @@ export default function Carousel({
   const handlePrev = useCallback(() => {
     if (containerRef.current) {
       const newIndex = Math.max(0, scrollProgress - 1);
-      containerRef.current.scrollLeft = newIndex * itemWidth;
+      containerRef.current.scrollLeft = newIndex * currentItemWidth;
     }
-  }, [scrollProgress, itemWidth]);
+  }, [scrollProgress, currentItemWidth]);
 
   const handleNext = useCallback(() => {
     if (containerRef.current) {
       const maxIndex = children.length - 1;
       const newIndex = Math.min(maxIndex, scrollProgress + 1);
-      containerRef.current.scrollLeft = newIndex * itemWidth;
+      containerRef.current.scrollLeft = newIndex * currentItemWidth;
     }
-  }, [scrollProgress, itemWidth, children.length]);
+  }, [scrollProgress, currentItemWidth, children.length]);
 
   const { dragState, dragHandlers } = useDrag({
     onDragEnd: handleDragEnd,
@@ -74,7 +92,7 @@ export default function Carousel({
       const clientWidth = container.clientWidth;
 
       // 현재 인덱스 계산
-      const currentIndex = Math.round(scrollLeft / itemWidth);
+      const currentIndex = Math.round(scrollLeft / currentItemWidth);
       setScrollProgress(currentIndex);
 
       // 시작/끝 도달 여부 확인
@@ -88,7 +106,7 @@ export default function Carousel({
     return () => {
       container.removeEventListener('scroll', updateProgress);
     };
-  }, [itemWidth]);
+  }, [currentItemWidth]);
 
   return (
     <div className={cn('relative', className)}>
@@ -109,16 +127,16 @@ export default function Carousel({
             key={index}
             className="shrink-0 pointer-events-none"
             style={{
-              width: `${itemWidth}px`,
+              //  width: `${itemWidth}px`,
               marginRight: index < children.length - 1 ? `${gap}px` : '0',
             }}>
-            <div className="pointer-events-auto">{child}</div>
+            <div className="pointer-events-auto w-fit">{child}</div>
           </div>
         ))}
       </div>
 
       {/* 네비게이션 버튼 */}
-      <div className="absolute top-4 left-4 flex gap-2 z-20">
+      <div className="absolute top-4 left-4 gap-2 z-20 hidden xl:flex">
         {/* 이전 버튼 */}
         <button
           type="button"

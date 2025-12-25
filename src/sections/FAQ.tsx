@@ -70,8 +70,9 @@ export default function FAQ() {
           alt="자주 묻는 질문"
         />
         <img
+          width={360}
           ref={titleRef}
-          className="xl:hidden block"
+          className="xl:hidden block w-full"
           src={titleSm}
           alt="자주 묻는 질문"
         />
@@ -79,12 +80,12 @@ export default function FAQ() {
         <div className="w-full">
           {FAQ_ITEMS.map((item) => (
             <div
-              className="p-10 border-b border-l border-(--stroke)"
+              className="p-5 xl:p-10 border-b border-l border-(--stroke)"
               key={item.id}>
               <button
                 type="button"
                 onClick={() => toggleItem(item.id)}
-                className="text-title1 text-white text-start flex justify-between w-full cursor-pointer">
+                className="faq-list-title text-white text-start flex justify-between w-full cursor-pointer">
                 <span>{item.q}</span>
                 <img
                   src={arrowUp}
