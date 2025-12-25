@@ -1,7 +1,7 @@
 import type { EventInfo } from '@/types/event';
 
 export const EVENT: EventInfo = {
-  name: 'community builder Days 2026',
+  name: 'Community Builders Day 2026',
   tagline: "커뮤니티를 '지속 가능'하게 만드는 실전 하루",
   startAt: '2026-01-24T00:00:00+09:00',
   registerUrl: 'https://example.com/register',

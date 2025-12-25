@@ -1,4 +1,4 @@
-# Community Builder Days 2026
+# Community Builders Day 2026
 
 커뮤니티 행사를 위한 정적 랜딩 페이지 템플릿입니다. 모든 콘텐츠 데이터는 `src/constants/`에서 중앙 관리되어 쉽게 커스터마이징할 수 있습니다.
 
