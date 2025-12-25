@@ -12,7 +12,7 @@ export type EventInfo = {
   locationLabel: string;
   cityLabel: string;
   registerUrl: string;
-  calendarUrl: string;
+
   contactEmail: string;
 };
 
@@ -40,5 +40,5 @@ export type FAQItem = {
 export type Sponsor = {
   name: string;
   url: string;
-  tier: "community" | "supporting" | "partner";
+  tier: 'community' | 'supporting' | 'partner';
 };

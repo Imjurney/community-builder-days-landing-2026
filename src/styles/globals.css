@@ -25,6 +25,10 @@ main {
   @apply max-w-[1440px] mx-auto;
 }
 
+section {
+  @apply border-l border-r border-(--stroke);
+}
+
 :root {
   background: #000;
   &::-webkit-scrollbar {
@@ -38,6 +42,7 @@ main {
   --primary-fg: 222 47% 10%;
   --secondary: #f90;
   --ring: 266 92% 70%;
+  --stroke: #41424a;
 
   /* 다른 컬러 예시:
      파란색: 217 91% 60%

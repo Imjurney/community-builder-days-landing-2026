@@ -14,7 +14,7 @@ export default function Schedule() {
   return (
     <section
       id="schedule"
-      className="bg-bg py-20 border-t border-b border-brand-stroke">
+      className="bg-bg py-20">
       <Container className="py-0 flex flex-col gap-24">
         <img
           src={title}
