@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-xs text-center xl:text-start text-gray-500 text-muted-fg xl:absolute xl:bottom-8 xl:left-[33px] mt-2 xl:mt-0">
+          <p className="text-xs text-center xl:text-start text-gray-500 text-muted-fg xl:absolute xl:bottom-2 xl:left-[33px] mt-2 xl:mt-0">
             © {new Date().getFullYear()} {EVENT.name}. All rights reserved.
           </p>
         </div>
