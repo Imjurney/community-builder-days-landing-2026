@@ -88,7 +88,7 @@ pnpm preview
 
 ```typescript
 export const EVENT: EventInfo = {
-  name: 'Community Builder Days 2025',
+  name: 'Community Builders Day 2026',
   startAt: '2026-01-24T00:00:00+09:00',
   registerUrl: 'https://example.com/register',
   hero: {
