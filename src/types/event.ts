@@ -7,13 +7,17 @@ export type EventInfo = {
   name: string;
   tagline: string;
   startAt: string;
-  endAt: string;
-  dateLabel: string;
-  locationLabel: string;
-  cityLabel: string;
   registerUrl: string;
-
   contactEmail: string;
+  hero: {
+    title: {
+      line1: string;
+      line2: string;
+    };
+    dateTime: string;
+    location: string;
+    ctaText: string;
+  };
 };
 
 export type Speaker = {

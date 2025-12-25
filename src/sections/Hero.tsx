@@ -1,5 +1,6 @@
 import Container from '@/components/Container';
 import { useSlideUp, useFadeIn } from '@/lib/gsap';
+import { EVENT } from '@/constants/event';
 import clockIcon from '@/assets/icons/clock.svg';
 
 export default function Hero() {
@@ -45,10 +46,11 @@ export default function Hero() {
             ref={titleRef}
             className="hero-title text-white">
             <p className="mb-0">
-              AWS <br className="xl:hidden" />
-              community
+              {EVENT.hero.title.line1.split(' ')[0]}{' '}
+              <br className="xl:hidden" />
+              {EVENT.hero.title.line1.split(' ').slice(1).join(' ')}
             </p>
-            <p className="mb-0">builders day KOREA</p>
+            <p className="mb-0">{EVENT.hero.title.line2}</p>
           </div>
 
           {/* 날짜 및 장소 정보 */}
@@ -64,16 +66,22 @@ export default function Hero() {
               />
             </div>
             <p className="hero-time text-white">
-              2026.01.24, CENTER FIELD, <br className="xl:hidden" />
-              18F, Seoul
+              {EVENT.hero.dateTime}, {EVENT.hero.location.split(', ')[0]},{' '}
+              <br className="xl:hidden" />
+              {EVENT.hero.location.split(', ').slice(1).join(', ')}
             </p>
           </div>
-          <button
-            type="button"
-            data-size="large"
-            className="mt-4 xl:mt-0 xl:translate-x-0 py-2.5 px-3.5 xl:py-4 xl:px-8 hero-button bg-(--opacity-s060) cursor-pointer text-white rounded-2xl backdrop-blur-[5px] inline-flex justify-center items-center transition-colors duration-300 hover:bg-amber-500/80">
-            참가하러 가기
-          </button>
+          <a
+            href={EVENT.registerUrl}
+            target="_blank"
+            rel="noopener noreferrer">
+            <button
+              type="button"
+              data-size="large"
+              className="mt-4 xl:mt-0 xl:translate-x-0 py-2.5 px-3.5 xl:py-4 xl:px-8 hero-button bg-(--opacity-s060) cursor-pointer text-white rounded-2xl backdrop-blur-[5px] inline-flex justify-center items-center transition-colors duration-300 hover:bg-amber-500/80">
+              {EVENT.hero.ctaText}
+            </button>
+          </a>
         </div>
       </Container>
     </section>
