@@ -16,6 +16,11 @@ export default function Speakers() {
     delay: 0.5,
   });
 
+  // 스피커를 두 그룹으로 나누기 (6명씩)
+  const midPoint = Math.ceil(SPEAKERS.length / 2);
+  const firstRowSpeakers = SPEAKERS.slice(0, midPoint);
+  const secondRowSpeakers = SPEAKERS.slice(midPoint);
+
   return (
     <section
       id="speakers"
@@ -34,27 +39,29 @@ export default function Speakers() {
         <div
           ref={carouselRef}
           className="flex flex-col gap-24">
+          {/* 첫 번째 줄 */}
           <Carousel
             className="pl-[115px] border-t border-b border-zinc-700"
             itemWidth={332}
             gap={0}
             showOverlay={true}>
-            {SPEAKERS.map((speaker, index) => (
+            {firstRowSpeakers.map((speaker) => (
               <SpeakerCard
-                key={index}
+                key={speaker.id}
                 {...speaker}
               />
             ))}
           </Carousel>
 
+          {/* 두 번째 줄 */}
           <Carousel
             className="pl-[115px] border-t border-b border-zinc-700"
             itemWidth={332}
             gap={0}
             showOverlay={true}>
-            {SPEAKERS.map((speaker, index) => (
+            {secondRowSpeakers.map((speaker) => (
               <SpeakerCard
-                key={`second-${index}`}
+                key={speaker.id}
                 {...speaker}
               />
             ))}

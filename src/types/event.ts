@@ -17,8 +17,8 @@ export type EventInfo = {
 };
 
 export type Speaker = {
+  id: string;
   name: string;
-
   org: string;
   bio: string;
   profileImage: string;
