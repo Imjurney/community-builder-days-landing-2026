@@ -40,6 +40,29 @@ export function getSpeakerById(speakerId: string) {
   return SPEAKERS.find((speaker) => speaker.id === speakerId);
 }
 
+// Helper function to get session titles by speaker ID
+export function getSessionsBySpeakerId(speakerId: string): string[] {
+  const sessions: string[] = [];
+
+  SCHEDULE_ROWS.forEach((row) => {
+    if ('full' in row) {
+      // full 타입에서 스피커 확인
+      if (row.full.speakerId === speakerId) {
+        sessions.push(row.full.title);
+      }
+    } else {
+      // cells 타입에서 스피커 확인
+      Object.values(row.cells).forEach((cell) => {
+        if (cell.kind === 'session' && cell.speakerId === speakerId) {
+          sessions.push(cell.title);
+        }
+      });
+    }
+  });
+
+  return sessions;
+}
+
 export const SCHEDULE_ROWS: ScheduleRow[] = [
   {
     time: '12:30 ~ 13:00',
@@ -48,7 +71,8 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
   {
     time: '13:30 ~ 13:50',
     full: {
-      title: '소개 및 기조 연설 - 우리는 왜 커뮤니티에 남는가',
+      title:
+        '소개 및 기조 연설 - 우리는 왜 커뮤니티에 남는가 (부제: EC2는 사람을 키우지 않는다)',
       tone: 'muted',
       speakerId: 'speaker-4',
     },

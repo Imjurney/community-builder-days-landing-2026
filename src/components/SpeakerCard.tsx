@@ -4,6 +4,7 @@ import { Speaker } from '@/types/event';
 
 interface SpeakerCardProps extends Speaker {
   className?: string;
+  sessions?: string[];
   isActive?: boolean;
   onCardClick?: (id: string) => void;
 }
@@ -15,6 +16,7 @@ export default function SpeakerCard({
   bio,
   profileImage,
   className,
+  sessions = [],
   isActive = false,
   onCardClick,
 }: SpeakerCardProps) {
@@ -59,14 +61,27 @@ export default function SpeakerCard({
         />
         <div className="absolute inset-0 flex flex-col justify-end p-3 xl:p-6 pb-6 xl:pb-10 text-white pointer-events-none">
           {/* 상단: 이름과 직책 */}
-          <div className="xl:mb-4 mb-3">
-            <h3 className="text-title1 text-white">{name}</h3>
-            <p className="text-fancy-body1 text-white">{org}</p>
+          <div className="mb-2 xl:mb-3">
+            {/* 세션 제목 */}
+            {sessions.length > 0 && (
+              <div className="mt-1 xl:mt-2">
+                <span className="text-gray-900 font-semibold">세선명</span>
+                {sessions.map((session, index) => (
+                  <p
+                    key={index}
+                    className="text-fancy-caption text-gray-900">
+                    {session}
+                  </p>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* 하단: 소개 */}
           <div>
-            <p className="speaker-bio text-black h-[140px]">{bio}</p>
+            <p className="speaker-bio text-black min-h-20 max-h-[140px]">
+              {bio}
+            </p>
           </div>
         </div>
       </div>

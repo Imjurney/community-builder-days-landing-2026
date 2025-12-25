@@ -2,6 +2,7 @@ import Container from '@/components/Container';
 import Carousel from '@/components/Carousel';
 import SpeakerCard from '@/components/SpeakerCard';
 import { SPEAKERS } from '@/constants/speakers';
+import { getSessionsBySpeakerId } from '@/constants/schedule';
 import { useSlideUp, useFadeIn } from '@/lib/gsap';
 import title from '@/assets/sectionTitle/title_section3.svg';
 import titleSm from '@/assets/sectionTitle/title_section3_sm.svg';
@@ -63,14 +64,18 @@ export default function Speakers() {
             itemWidth={332}
             gap={0}
             showOverlay={true}>
-            {firstRowSpeakers.map((speaker) => (
-              <SpeakerCard
-                key={speaker.id}
-                {...speaker}
-                isActive={activeCardId === speaker.id}
-                onCardClick={handleCardClick}
-              />
-            ))}
+            {firstRowSpeakers.map((speaker) => {
+              const sessions = getSessionsBySpeakerId(speaker.id);
+              return (
+                <SpeakerCard
+                  key={speaker.id}
+                  {...speaker}
+                  sessions={sessions}
+                  isActive={activeCardId === speaker.id}
+                  onCardClick={handleCardClick}
+                />
+              );
+            })}
           </Carousel>
 
           {/* 두 번째 줄 */}
@@ -79,14 +84,18 @@ export default function Speakers() {
             itemWidth={332}
             gap={0}
             showOverlay={true}>
-            {secondRowSpeakers.map((speaker) => (
-              <SpeakerCard
-                key={speaker.id}
-                {...speaker}
-                isActive={activeCardId === speaker.id}
-                onCardClick={handleCardClick}
-              />
-            ))}
+            {secondRowSpeakers.map((speaker) => {
+              const sessions = getSessionsBySpeakerId(speaker.id);
+              return (
+                <SpeakerCard
+                  key={speaker.id}
+                  {...speaker}
+                  sessions={sessions}
+                  isActive={activeCardId === speaker.id}
+                  onCardClick={handleCardClick}
+                />
+              );
+            })}
           </Carousel>
         </div>
       </Container>

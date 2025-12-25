@@ -18,13 +18,13 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative h-screen overflow-hidden -mt-[88px] pt-[88px]">
+      className="relative h-2/3 overflow-hidden -mt-[88px] pt-[88px] xl:h-[60svh]">
       {/* 데스크톱 배경 이미지 - 최적화된 로딩 */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-4/5">
         <img
           src="/mainBackground.svg"
           alt=""
-          className="w-screen h-screen object-cover object-center hidden xl:block"
+          className="w-full object-contain hidden xl:block"
           loading="eager"
           decoding="async"
         />
@@ -32,14 +32,14 @@ export default function Hero() {
         <img
           src="/mainBackground_sm.svg"
           alt=""
-          className="w-screen h-screen object-cover object-center xl:hidden block"
+          className="w-full object-cover object-center xl:hidden block"
           loading="eager"
           decoding="async"
         />
       </div>
 
       {/* 메인 콘텐츠 */}
-      <Container className="relative z-10 ml-5 xl:ml-14 flex items-start justify-start min-h-screen pt-6 xl:pt-32">
+      <Container className="relative z-10 ml-5 pb-8 xl:ml-14 flex items-start justify-start h-42/5 pt-6 xl:pt-32">
         <div className="flex flex-col gap-4 xl:gap-8 items-start">
           {/* 메인 타이틀 */}
           <div

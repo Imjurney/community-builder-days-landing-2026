@@ -39,7 +39,7 @@ export function ScheduleRow({ row }: ScheduleRowProps) {
 
               return (
                 <div className="flex items-center justify-center px-4">
-                  <div className="flex items-center justify-between max-w-[530px] w-full">
+                  <div className="flex items-center justify-center gap-6">
                     <div className="flex-1 flex flex-col gap-1 text-left min-w-0">
                       <p className="text-title1">{row.full.title}</p>
                       <p className="text-body1 text-white/70">

@@ -18,7 +18,7 @@ export const SPEAKERS: Speaker[] = [
     id: 'speaker-1',
     name: '박상운',
     org: 'Serverless Hero',
-    bio: 'AI기반 3D컨텐츠를 연구하는 스타트업의 Dev Lead이자 AWS Serverless Hero입니다. Serverless를 좋아하여 최대한 많은 문제를 Serverless로 풀어보고 있습니다. 특히 AI시대에 Serverless의 장점이 훨씬 커지고 있어 기대하는 마음으로 Serverless의 다양한 활용을 연구중입니다.',
+    bio: 'AI기반 3D컨텐츠를 연구하는 스타트업의 Dev Lead이자 AWS Serverless Hero입니다. Serverless를 좋아하여 최대한 많은 문제를 Serverless로 풀어보고 있습니다. ',
     profileImage: chris_park,
   },
   {
@@ -53,7 +53,7 @@ export const SPEAKERS: Speaker[] = [
     id: 'speaker-6',
     name: '정영진',
     org: 'Operation CB',
-    bio: 'AWS 기반으로 펼쳐지는 다양한 영역의 Cloud 기반 설계, 운영 등 노하우를 여러 커뮤니티에 알리고자 활동하고 있는 DevOps Engineer 입니다. 커뮤니티를 통해 아는 노하우를 많은 분들에게 알려드리고, 또 배우는 선순환을 만들어나가고자 노력하고 있습니다.',
+    bio: 'AWS 기반으로 펼쳐지는 다양한 영역의 Cloud 기반 설계, 운영 등 노하우를 여러 커뮤니티에 알리고자 활동하고 있는 DevOps Engineer 입니다.',
     profileImage: zerone,
   },
   {
@@ -95,7 +95,7 @@ export const SPEAKERS: Speaker[] = [
     id: 'speaker-12',
     name: '권성환',
     org: 'DB CB',
-    bio: '올리브영에서 TPM, DevRel, Tech. Writer, 사업지원 역할자들과 함께 하는 테크전략지원팀에서 일하고 있습니다. AWS 오거나이저 은퇴를 앞둔 올드비이기도 합니다. AWS 데이터, 을지로 소모임 오거나이저와 CB을 해왔습니다.',
+    bio: '올리브영에서 TPM, DevRel, Tech. Writer, 사업지원 역할자들과 함께 하는 테크전략지원팀에서 일하고 있습니다. AWS 데이터, 을지로 소모임 오거나이저와 CB을 해왔습니다.',
     profileImage: woody_kwon,
   },
   {
