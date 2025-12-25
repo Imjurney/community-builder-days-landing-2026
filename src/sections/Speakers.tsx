@@ -75,7 +75,7 @@ export default function Speakers() {
                                 className="pl-5 xl:pl-[115px] border-t border-b border-zinc-700"
                                 itemWidth={332}
                                 gap={0}
-                                showOverlay={true}>
+                                showOverlay={false}>
                                 {rowSpeakers.map((speaker) => {
                                     const sessions = getSessionsBySpeakerId(speaker.id);
                                     return (
@@ -101,7 +101,7 @@ export default function Speakers() {
                             className="pl-5 xl:pl-[115px] border-t border-b border-zinc-700"
                             itemWidth={332}
                             gap={0}
-                            showOverlay={true}>
+                            showOverlay={false}>
                             {heroes.map((speaker) => {
                                 const sessions = getSessionsBySpeakerId(speaker.id);
                                 return (
