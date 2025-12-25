@@ -3,6 +3,7 @@ import OverviewBox from '@/components/OverviewBox';
 import { useFadeIn, useStagger } from '@/lib/gsap';
 import { OVERVIEW_ITEMS } from '@/constants/overview';
 import title from '@/assets/sectionTitle/title_section1.svg';
+import titleSm from '@/assets/sectionTitle/title_section1_sm.svg';
 
 export default function Overview() {
   const contentRef = useFadeIn<HTMLDivElement>({
@@ -20,17 +21,24 @@ export default function Overview() {
   return (
     <section
       id="overview"
-      className="bg-bg py-20 border-t border-b border-brand-stroke">
+      className="bg-bg py-[46px] xl:py-20 border-t border-b border-brand-stroke">
       <Container className="py-0 flex flex-col gap-16">
         <div
           ref={contentRef}
           className="relative">
           {/* 콘텐츠 박스 */}
           <img
-            className="mr-auto"
+            className="mr-auto hidden xl:block"
             src={title}
             width={801}
             height={416}
+            alt="Overview"
+          />
+          <img
+            width={360}
+            height={680}
+            className="w-full xl:hidden block"
+            src={titleSm}
             alt="Overview"
           />
         </div>
@@ -38,7 +46,7 @@ export default function Overview() {
         {/* Overview 박스들 */}
         <div
           ref={boxesRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-brand-stroke">
+          className="grid grid-cols-2 lg:grid-cols-4 border border-brand-stroke">
           {OVERVIEW_ITEMS.map((item, index) => (
             <div
               key={item.title}

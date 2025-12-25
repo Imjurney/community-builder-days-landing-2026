@@ -1,8 +1,8 @@
-import React from "react";
-import gsap from "gsap";
-import { useGSAP } from "@/lib/gsap";
-import Countdown from "./Countdown";
-import { EVENT } from "@/constants/event";
+import React from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@/lib/gsap';
+import Countdown from './Countdown';
+import { EVENT } from '@/constants/event';
 
 // 스크롤 위치를 추적하는 Hook (기존 방식 유지)
 function useScrollPosition() {
@@ -23,12 +23,12 @@ function useScrollPosition() {
     };
 
     updateScrollPosition();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", updateScrollPosition);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', updateScrollPosition);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", updateScrollPosition);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateScrollPosition);
     };
   }, []);
 
@@ -41,7 +41,7 @@ type Props = {
 };
 
 export default function StickyCountdown({
-  buttonText = "참가하러 가기",
+  buttonText = '참가하러 가기',
   onButtonClick,
 }: Props) {
   const scrollPercentage = useScrollPosition();
@@ -56,7 +56,7 @@ export default function StickyCountdown({
     if (onButtonClick) {
       onButtonClick();
     } else {
-      window.open(EVENT.registerUrl, "_blank");
+      window.open(EVENT.registerUrl, '_blank');
     }
   }, [onButtonClick]);
 
@@ -67,7 +67,7 @@ export default function StickyCountdown({
         y: -100,
         autoAlpha: 0,
         scale: 0.96,
-        pointerEvents: "none",
+        pointerEvents: 'none',
       });
 
       const showTimeline = gsap.timeline({ paused: true });
@@ -75,26 +75,26 @@ export default function StickyCountdown({
 
       showTimeline
         .add(() => {
-          gsap.set(element, { pointerEvents: "auto" });
+          gsap.set(element, { pointerEvents: 'auto' });
         }, 0)
         .to(element, {
           y: 0,
           autoAlpha: 1,
           scale: 1,
           duration: 0.55,
-          ease: "power2.out",
+          ease: 'power2.out',
         });
 
       hideTimeline
         .add(() => {
-          gsap.set(element, { pointerEvents: "none" });
+          gsap.set(element, { pointerEvents: 'none' });
         }, 0)
         .to(element, {
           y: -120,
           autoAlpha: 0,
           scale: 0.96,
           duration: 0.5,
-          ease: "power3.inOut",
+          ease: 'power3.inOut',
         });
 
       showTimelineRef.current = showTimeline;
@@ -137,9 +137,8 @@ export default function StickyCountdown({
   return (
     <div
       ref={containerRef}
-      className="fixed top-[112px] left-1/2 z-50 -translate-x-1/2 will-change-transform"
-      aria-hidden={!shouldShow}
-    >
+      className="fixed top-[70px] xl:top-[112px] left-1/2 z-50 -translate-x-1/2 will-change-transform"
+      aria-hidden={!shouldShow}>
       <Countdown
         targetIso={EVENT.startAt}
         buttonText={buttonText}

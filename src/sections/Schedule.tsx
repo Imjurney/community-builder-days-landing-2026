@@ -4,6 +4,7 @@ import { ScheduleTrackHeader } from '@/components/ScheduleTrackHeader';
 import { SCHEDULE_ROWS, SCHEDULE_TRACKS } from '@/constants/schedule';
 import { useFadeIn } from '@/lib/gsap';
 import title from '@/assets/sectionTitle/title_section2.svg';
+import titleSm from '@/assets/sectionTitle/title_section2_sm.svg';
 
 export default function Schedule() {
   const gridRef = useFadeIn<HTMLTableElement>({
@@ -17,7 +18,15 @@ export default function Schedule() {
       className="bg-bg py-20">
       <Container className="py-0 flex flex-col gap-24">
         <img
+          className="hidden xl:block"
           src={title}
+          width={'100%'}
+          height={'auto'}
+          alt="스케줄"
+        />
+        <img
+          className="xl:hidden block"
+          src={titleSm}
           width={'100%'}
           height={'auto'}
           alt="스케줄"

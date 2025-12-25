@@ -17,32 +17,37 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-screen overflow-hidden -mt-[88px] pt-[88px]">
+      className="relative h-screen overflow-hidden -mt-[88px] pt-[88px]">
       {/* 데스크톱 배경 이미지 - 최적화된 로딩 */}
-      <div className="hidden lg:block absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full">
         <img
           src="/mainBackground.svg"
           alt=""
-          className="w-screen h-screen object-cover object-center"
+          className="w-screen h-screen object-cover object-center hidden xl:block"
+          loading="eager"
+          decoding="async"
+        />
+
+        <img
+          src="/mainBackground_sm.svg"
+          alt=""
+          className="w-screen h-screen object-cover object-center xl:hidden block"
           loading="eager"
           decoding="async"
         />
       </div>
 
-      {/* 모바일/태블릿 대체 배경 */}
-      <div className="lg:hidden absolute inset-0 opacity-70">
-        <div className="absolute -top-40 left-1/2 h-xl w-xl -translate-x-1/2 rounded-full bg-primary/25 blur-3xl" />
-        <div className="absolute -bottom-40 left-1/3 h-md w-md rounded-full bg-white/10 blur-3xl" />
-      </div>
-
       {/* 메인 콘텐츠 */}
-      <Container className="relative z-10 ml-14 flex items-start justify-start min-h-screen pt-32">
-        <div className="flex flex-col gap-8 items-start">
+      <Container className="relative z-10 ml-5 xl:ml-14 flex items-start justify-start min-h-screen pt-6 xl:pt-32">
+        <div className="flex flex-col gap-4 xl:gap-8 items-start">
           {/* 메인 타이틀 */}
           <div
             ref={titleRef}
-            className="text-fancy-large-title1 text-white">
-            <p className="mb-0">AWS community</p>
+            className="hero-title text-white">
+            <p className="mb-0">
+              AWS <br className="xl:hidden" />
+              community
+            </p>
             <p className="mb-0">builders day KOREA</p>
           </div>
 
@@ -50,7 +55,7 @@ export default function Hero() {
           <div
             ref={infoRef}
             className="flex gap-2 items-center">
-            <div className="w-8 h-8 flex items-center justify-center">
+            <div className="w-6 h-6 xl:w-8 xl:h-8 flex items-center justify-center">
               <img
                 width={32}
                 height={32}
@@ -58,10 +63,17 @@ export default function Hero() {
                 alt="시계 아이콘"
               />
             </div>
-            <p className="text-english-title3 text-white">
-              2026.01.24, CENTER FIELD, 18F, Seoul
+            <p className="hero-time text-white">
+              2026.01.24, CENTER FIELD, <br className="xl:hidden" />
+              18F, Seoul
             </p>
           </div>
+          <button
+            type="button"
+            data-size="large"
+            className="mt-4 xl:mt-0 xl:translate-x-0 py-2.5 px-3.5 xl:py-4 xl:px-8 hero-button bg-(--opacity-s060) cursor-pointer text-white rounded-2xl backdrop-blur-[5px] inline-flex justify-center items-center transition-colors duration-300 hover:bg-amber-500/80">
+            참가하러 가기
+          </button>
         </div>
       </Container>
     </section>

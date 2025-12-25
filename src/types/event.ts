@@ -32,6 +32,7 @@ export type ScheduleItem = {
 };
 
 export type FAQItem = {
+  id: string;
   q: string;
   a: string;
 };

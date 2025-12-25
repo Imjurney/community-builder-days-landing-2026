@@ -4,6 +4,7 @@ import SpeakerCard from '@/components/SpeakerCard';
 import { SPEAKERS } from '@/constants/speakers';
 import { useSlideUp, useFadeIn } from '@/lib/gsap';
 import title from '@/assets/sectionTitle/title_section3.svg';
+import titleSm from '@/assets/sectionTitle/title_section3_sm.svg';
 
 export default function Speakers() {
   const titleRef = useSlideUp<HTMLHeadingElement>({
@@ -29,9 +30,18 @@ export default function Speakers() {
         {/* 섹션 제목 */}
         <div className="text-center">
           <img
+            className="hidden xl:block"
             width={'100%'}
             height={'auto'}
             src={title}
+            alt="Speakers"
+          />
+          <img
+            className="xl:hidden block"
+            width={'100%'}
+            height={'auto'}
+            src={titleSm}
+            alt="Speakers"
           />
         </div>
 

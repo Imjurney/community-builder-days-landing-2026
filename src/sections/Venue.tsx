@@ -1,7 +1,9 @@
 import Container from '@/components/Container';
 import { useFadeIn } from '@/lib/gsap';
 import mapImage from '@/assets/map/map.svg';
+import mapImageSm from '@/assets/map/map_sm.svg';
 import title from '@/assets/sectionTitle/title_section4.svg';
+import titleSm from '@/assets/sectionTitle/title_section4_sm.svg';
 import subwayIcon from '@/assets/icons/subway.svg';
 import busIcon from '@/assets/icons/bus.svg';
 import { VENUE_DATA, DIRECTIONS_METHODS } from '@/constants/venue';
@@ -32,10 +34,15 @@ export default function Venue() {
       <Container className="py-0 flex flex-col border border-(--stroke)">
         {/* 타이틀 이미지 */}
         <img
-          className="ml-auto"
+          className="ml-auto hidden xl:block"
           src={title}
           width={545}
           height={320}
+          alt="오시는 길"
+        />
+        <img
+          className="ml-auto xl:hidden block"
+          src={titleSm}
           alt="오시는 길"
         />
 
@@ -49,7 +56,12 @@ export default function Venue() {
               height={416}
               src={mapImage}
               alt="오시는 길 지도"
-              className="w-full h-full"
+              className="w-full h-full hidden xl:block"
+            />
+            <img
+              src={mapImageSm}
+              alt="오시는 길 지도"
+              className="w-full h-full xl:hidden block"
             />
           </div>
 

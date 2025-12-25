@@ -1,42 +1,28 @@
-import React from 'react';
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import gsap from 'gsap';
 import { cnCustom } from '@/lib/utils';
-
-// 유틸리티 함수: 숫자를 2자리로 패딩
-function pad2(value: number) {
-  return String(value).padStart(2, '0');
-}
-
-// 유틸리티 함수: 남은 시간 계산
-function getRemaining(targetAtMs: number, nowMs: number) {
-  const totalMs = Math.max(0, targetAtMs - nowMs);
-  const totalSeconds = Math.floor(totalMs / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-  return {
-    totalMs,
-    days,
-    hours,
-    minutes,
-    seconds,
-    isComplete: targetAtMs <= nowMs,
-  };
-}
+import { pad2, getRemaining } from '@/lib/time';
 
 // 커스텀 Hook: 카운트다운 로직 분리 (단일 책임 원칙)
 function useCountdown(targetIso: string) {
-  const targetAtMs = React.useMemo(() => Date.parse(targetIso), [targetIso]);
-  const [nowMs, setNowMs] = React.useState(() => Date.now());
+  const targetAtMs = useMemo(() => Date.parse(targetIso), [targetIso]);
+  const [nowMs, setNowMs] = useState(() => Date.now());
 
-  React.useEffect(() => {
+  useEffect(() => {
     const id = window.setInterval(() => setNowMs(Date.now()), 1000);
     return () => window.clearInterval(id);
   }, []);
 
   const isValidTarget = Number.isFinite(targetAtMs);
-  const remaining = React.useMemo(() => {
+  const remaining = useMemo(() => {
     return isValidTarget ? getRemaining(targetAtMs, nowMs) : null;
   }, [isValidTarget, targetAtMs, nowMs]);
 
@@ -60,7 +46,7 @@ export default function Countdown({
   const { isValidTarget, remaining } = useCountdown(targetIso);
 
   // 버튼 클릭 핸들러 메모이제이션
-  const handleButtonClick = React.useCallback(() => {
+  const handleButtonClick = useCallback(() => {
     onButtonClick?.();
   }, [onButtonClick]);
 
@@ -70,39 +56,44 @@ export default function Countdown({
 
   return (
     <div
-      className={cnCustom('relative isolate w-max my-0 mx-auto', className)}
+      className={cnCustom('relative isolate w-80 xl:w-max mx-auto', className)}
       aria-live="polite">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-[20px] bg-white/20 backdrop-blur-[10px]"
+        className="pointer-events-none fixed inset-0 rounded-[20px] bg-white/20 backdrop-blur-[10px]"
       />
 
-      <div className="relative z-10 flex gap-16 items-center p-3">
-        <div className="flex gap-8 items-center">
+      <div className="relative z-10 flex flex-col xl:flex-row gap-3 xl:gap-16 items-center p-4 xl:p-3">
+        <div className="flex gap-2 xl:gap-8 items-center w-full xl:w-auto justify-center">
           <TimeUnit
             value={remaining.days}
             label="days"
+            mobileLabel="days"
           />
           <TimeUnit
             value={remaining.hours}
             label="hours"
+            mobileLabel="h"
           />
           <TimeUnit
             value={remaining.minutes}
             label="minutes"
+            mobileLabel="m"
           />
           <TimeUnit
             value={remaining.seconds}
             label="seconds"
+            mobileLabel="s"
           />
         </div>
 
         <button
+          type="button"
           onClick={handleButtonClick}
-          className="relative flex items-center justify-center rounded-2xl px-[14px] py-[10px] shrink-0">
+          className="group relative flex items-center justify-center rounded-2xl px-[14px] py-[10px] shrink-0 w-full xl:w-auto">
           <span
             aria-hidden="true"
-            className="absolute inset-0 rounded-2xl bg-orange-500/60 backdrop-blur-[5px] transition-colors hover:bg-orange-500/80"
+            className="absolute inset-0 rounded-2xl bg-orange-500/60 backdrop-blur-[5px] transition-colors duration-300 group-hover:bg-orange-500/80"
           />
           <span className="text-body1 relative z-10 text-white text-center whitespace-nowrap">
             {buttonText}
@@ -113,16 +104,21 @@ export default function Countdown({
   );
 }
 
-// 시간 단위 컴포넌트: 각 시간 단위를 표시 (React.memo로 최적화)
+// 시간 단위 컴포넌트: 각 시간 단위를 표시 (memo로 최적화)
 type TimeUnitProps = {
   value: number;
   label: string;
+  mobileLabel: string;
 };
 
-const TimeUnit = React.memo(function TimeUnit({ value, label }: TimeUnitProps) {
-  const valueRef = React.useRef<HTMLSpanElement>(null);
+const TimeUnit = memo(function TimeUnit({
+  value,
+  label,
+  mobileLabel,
+}: TimeUnitProps) {
+  const valueRef = useRef<HTMLSpanElement>(null);
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (!valueRef.current) return;
     const tween = gsap.fromTo(
       valueRef.current,
@@ -138,10 +134,13 @@ const TimeUnit = React.memo(function TimeUnit({ value, label }: TimeUnitProps) {
     <div className="flex gap-1 items-center whitespace-nowrap">
       <span
         ref={valueRef}
-        className="text-fancy-large-title2 text-white tabular-nums">
+        className="text-fancy-timer2 xl:text-fancy-timer text-white">
         {pad2(value)}
       </span>
-      <span className="text-fancy-subtitle1 text-white/60">{label}</span>
+      <span className="text-fancy-body1 xl:text-fancy-subtitle1 text-white/60">
+        <span className="xl:hidden">{mobileLabel}</span>
+        <span className="hidden xl:inline">{label}</span>
+      </span>
     </div>
   );
 });

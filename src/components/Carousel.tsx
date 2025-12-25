@@ -1,6 +1,7 @@
-import { useState, useRef, useCallback } from 'react';
+import { useRef, useCallback, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { useDrag } from '@/hooks/useDrag';
+import arrowUp from '@/assets/icons/ArrowUp.svg';
 
 interface CarouselProps {
   children: React.ReactNode[];
@@ -17,48 +18,90 @@ export default function Carousel({
   gap = 0,
   showOverlay = true,
 }: CarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const startScrollLeftRef = useRef(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [isAtStart, setIsAtStart] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
 
-  const totalItems = children.length;
-  const itemsToShow = Math.floor((1440 - 230) / itemWidth); // 컨테이너 너비에서 패딩 제외
-  const maxIndex = Math.max(0, totalItems - itemsToShow);
+  const handleDragEnd = useCallback(() => {
+    // 드래그 종료 시 특별한 처리 없음
+  }, []);
 
-  const handleDragEnd = useCallback(
-    (deltaX: number) => {
-      // 드래그 방향에 따라 슬라이드
-      if (deltaX > 0) {
-        // 오른쪽으로 드래그 (이전 슬라이드)
-        setCurrentIndex((prev) => Math.max(prev - 1, 0));
-      } else {
-        // 왼쪽으로 드래그 (다음 슬라이드)
-        setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
-      }
-    },
-    [maxIndex]
-  );
+  const handlePrev = useCallback(() => {
+    if (containerRef.current) {
+      const newIndex = Math.max(0, scrollProgress - 1);
+      containerRef.current.scrollLeft = newIndex * itemWidth;
+    }
+  }, [scrollProgress, itemWidth]);
+
+  const handleNext = useCallback(() => {
+    if (containerRef.current) {
+      const maxIndex = children.length - 1;
+      const newIndex = Math.min(maxIndex, scrollProgress + 1);
+      containerRef.current.scrollLeft = newIndex * itemWidth;
+    }
+  }, [scrollProgress, itemWidth, children.length]);
 
   const { dragState, dragHandlers } = useDrag({
     onDragEnd: handleDragEnd,
-    threshold: 50,
+    threshold: 5,
   });
 
-  const translateX =
-    -(currentIndex * (itemWidth + gap)) +
-    (dragState.isDragging ? dragState.deltaX : 0);
+  // 드래그 시작 시 현재 스크롤 위치 저장
+  useEffect(() => {
+    if (dragState.isDragging && containerRef.current) {
+      startScrollLeftRef.current = containerRef.current.scrollLeft;
+    }
+  }, [dragState.isDragging]);
+
+  // 드래그 중 실시간 스크롤 업데이트
+  useEffect(() => {
+    if (dragState.isDragging && containerRef.current) {
+      containerRef.current.scrollLeft =
+        startScrollLeftRef.current - dragState.deltaX;
+    }
+  }, [dragState.isDragging, dragState.deltaX]);
+
+  // 스크롤 진행도 계산
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const updateProgress = () => {
+      const scrollLeft = container.scrollLeft;
+      const scrollWidth = container.scrollWidth;
+      const clientWidth = container.clientWidth;
+
+      // 현재 인덱스 계산
+      const currentIndex = Math.round(scrollLeft / itemWidth);
+      setScrollProgress(currentIndex);
+
+      // 시작/끝 도달 여부 확인
+      setIsAtStart(scrollLeft <= 5);
+      setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 5);
+    };
+
+    updateProgress();
+    container.addEventListener('scroll', updateProgress);
+
+    return () => {
+      container.removeEventListener('scroll', updateProgress);
+    };
+  }, [itemWidth]);
 
   return (
-    <div className={cn('relative overflow-hidden', className)}>
+    <div className={cn('relative', className)}>
       {/* 캐로셀 컨테이너 */}
       <div
         ref={containerRef}
         className={cn(
-          'flex transition-transform duration-300 ease-out select-none overflow-x-hidden',
+          'flex overflow-x-auto overflow-y-hidden',
+          'scrollbar-hide',
           dragState.isDragging ? 'cursor-grabbing' : 'cursor-grab'
         )}
         style={{
-          transform: `translateX(${translateX}px)`,
-          transitionDuration: dragState.isDragging ? '0ms' : '300ms',
+          scrollBehavior: dragState.isDragging ? 'auto' : 'smooth',
         }}
         {...dragHandlers}>
         {children.map((child, index) => (
@@ -72,6 +115,51 @@ export default function Carousel({
             <div className="pointer-events-auto">{child}</div>
           </div>
         ))}
+      </div>
+
+      {/* 네비게이션 버튼 */}
+      <div className="absolute top-4 left-4 flex gap-2 z-20">
+        {/* 이전 버튼 */}
+        <button
+          type="button"
+          onClick={handlePrev}
+          disabled={isAtStart}
+          className={cn(
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200',
+            'bg-white/10 backdrop-blur-sm',
+            isAtStart
+              ? 'opacity-30 cursor-not-allowed'
+              : 'hover:bg-white/20 active:scale-95'
+          )}
+          aria-label="이전 슬라이드">
+          <img
+            src={arrowUp}
+            alt=""
+            className="w-6 h-6 -rotate-90"
+            aria-hidden="true"
+          />
+        </button>
+
+        {/* 다음 버튼 */}
+        <button
+          type="button"
+          onClick={handleNext}
+          disabled={isAtEnd}
+          className={cn(
+            'w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200',
+            'bg-white/10 backdrop-blur-sm',
+            isAtEnd
+              ? 'opacity-30 cursor-not-allowed'
+              : 'hover:bg-white/20 active:scale-95'
+          )}
+          aria-label="다음 슬라이드">
+          <img
+            src={arrowUp}
+            alt=""
+            className="w-6 h-6 rotate-90"
+            aria-hidden="true"
+          />
+        </button>
       </div>
 
       {/* 오른쪽 그라데이션 오버레이 */}

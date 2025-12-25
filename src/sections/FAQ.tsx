@@ -5,24 +5,25 @@ import Container from '@/components/Container';
 import { FAQ as FAQ_ITEMS } from '@/constants/faq';
 import { useFadeIn } from '@/lib/gsap';
 import title from '@/assets/sectionTitle/title_section5.svg';
+import titleSm from '@/assets/sectionTitle/title_section5_sm.svg';
 import arrowUp from '@/assets/icons/ArrowUp.svg';
 import gsap from 'gsap';
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const contentRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const titleRef = useFadeIn<HTMLImageElement>({
     duration: 0.8,
     delay: 0.2,
   });
 
-  const toggleItem = (index: number) => {
-    const isOpening = openIndex !== index;
+  const toggleItem = (id: string) => {
+    const isOpening = openId !== id;
 
     // 이전에 열려있던 항목 닫기
-    if (openIndex !== null && openIndex !== index) {
-      const prevContentEl = contentRefs.current[openIndex];
+    if (openId !== null && openId !== id) {
+      const prevContentEl = contentRefs.current[openId];
       if (prevContentEl) {
         gsap.to(prevContentEl, {
           height: 0,
@@ -33,9 +34,9 @@ export default function FAQ() {
       }
     }
 
-    setOpenIndex(isOpening ? index : null);
+    setOpenId(isOpening ? id : null);
 
-    const contentEl = contentRefs.current[index];
+    const contentEl = contentRefs.current[id];
     if (!contentEl) return;
 
     if (isOpening) {
@@ -59,22 +60,30 @@ export default function FAQ() {
     <section
       id="faq"
       className="border-t border-b border-(--stroke)">
-      <Container className="py-0 flex items-start">
+      <Container className="py-0 flex flex-col xl:flex-row items-start">
         <img
           ref={titleRef}
+          className="hidden xl:block"
           src={title}
           width={546}
           height={320}
           alt="자주 묻는 질문"
         />
+        <img
+          ref={titleRef}
+          className="xl:hidden block"
+          src={titleSm}
+          alt="자주 묻는 질문"
+        />
 
         <div className="w-full">
-          {FAQ_ITEMS.map((item, index) => (
+          {FAQ_ITEMS.map((item) => (
             <div
               className="p-10 border-b border-l border-(--stroke)"
-              key={item.q}>
+              key={item.id}>
               <button
-                onClick={() => toggleItem(index)}
+                type="button"
+                onClick={() => toggleItem(item.id)}
                 className="text-title1 text-white text-start flex justify-between w-full cursor-pointer">
                 <span>{item.q}</span>
                 <img
@@ -82,14 +91,14 @@ export default function FAQ() {
                   alt=""
                   aria-hidden="true"
                   className={`shrink-0 h-8 w-8 transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
+                    openId === item.id ? 'rotate-180' : ''
                   }`}
                 />
               </button>
 
               <div
                 ref={(el) => {
-                  contentRefs.current[index] = el;
+                  contentRefs.current[item.id] = el;
                 }}
                 className="overflow-hidden"
                 style={{

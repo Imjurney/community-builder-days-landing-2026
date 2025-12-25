@@ -15,7 +15,7 @@ export default function SpeakerCard({
   return (
     <div
       className={cn(
-        'relative w-[332px] h-[322px] overflow-hidden group cursor-pointer',
+        'relative w-[332px] h-[322px] overflow-hidden group',
         className
       )}>
       {/* 프로필 이미지 */}

@@ -22,7 +22,18 @@
 }
 
 main {
-  @apply max-w-[1440px] mx-auto;
+  @apply mx-auto;
+
+  /* 데스크톱: 1024px 이상 */
+  @media (min-width: 1240px) {
+    max-width: 1440px;
+  }
+
+  /* 모바일: 1024px 미만 - 430px 고정, 중앙 정렬 */
+  @media (max-width: 1239px) {
+    max-width: 430px;
+    width: 100%;
+  }
 }
 
 section {
@@ -74,6 +85,7 @@ section {
   --track-3: #ffffff;
   --opacity-p020: rgba(112, 63, 255, 0.2);
   --opacity-s020: rgba(255, 153, 0, 0.2);
+  --opacity-s060: rgba(255, 153, 0, 0.6);
   --opacity-w020: rgba(255, 255, 255, 0.2);
   --opacity-w040: rgba(255, 255, 255, 0.4);
   --opacity-w060: rgba(255, 255, 255, 0.6);
@@ -87,6 +99,10 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
 }
 
 ::selection {
@@ -297,4 +313,91 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
+}
+
+/* Fancy/Timer */
+.text-fancy-timer {
+  font-family: 'GalmuriMono9', 'Courier New', monospace;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px; /* 125% */
+  letter-spacing: 0.48px;
+}
+
+/* Fancy/Timer2 (Mobile) */
+.text-fancy-timer2 {
+  font-family: 'GalmuriMono9', 'Courier New', monospace;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px; /* 133.333% */
+  letter-spacing: 0;
+}
+
+/* Hero Title - Responsive */
+.hero-title {
+  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px; /* 125% */
+}
+
+@media (min-width: 1240px) {
+  .hero-title {
+    font-size: 96px;
+    font-weight: 600;
+    line-height: 96px; /* 100% */
+  }
+}
+
+/* Hero Time - Responsive */
+.hero-time {
+  font-family: 'Amazon Ember Duospace', 'JetBrains Mono', 'Fira Code',
+    'Consolas', 'Monaco', monospace;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.8px;
+}
+
+@media (min-width: 1240px) {
+  .hero-time {
+    font-size: 24px;
+    line-height: 36px; /* 150% */
+    letter-spacing: -1.2px;
+  }
+}
+
+/* Hero Button - Responsive */
+.hero-button {
+  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+@media (min-width: 1240px) {
+  .hero-button {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 32px; /* 160% */
+    letter-spacing: -0.4px;
+  }
+}
+
+/* ============================================
+   스크롤바 숨기기
+   ============================================ */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
