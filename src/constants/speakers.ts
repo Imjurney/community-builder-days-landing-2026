@@ -15,27 +15,6 @@ import sinsky from '@/assets/speaker/sinsky.png';
 
 export const SPEAKERS: Speaker[] = [
   {
-    id: 'speaker-1',
-    name: '박상운',
-    org: 'Serverless Hero',
-    bio: 'AI기반 3D컨텐츠를 연구하는 스타트업의 Dev Lead이자 AWS Serverless Hero입니다. Serverless를 좋아하여 최대한 많은 문제를 Serverless로 풀어보고 있습니다. ',
-    profileImage: chris_park,
-  },
-  {
-    id: 'speaker-2',
-    name: '소성운',
-    org: 'AI Hero',
-    bio: '-',
-    profileImage: yanso,
-  },
-  {
-    id: 'speaker-3',
-    name: '신재현',
-    org: 'Community Hero',
-    bio: '-',
-    profileImage: sinsky,
-  },
-  {
     id: 'speaker-4',
     name: '정태환',
     org: 'Operation CB',
@@ -104,5 +83,26 @@ export const SPEAKERS: Speaker[] = [
     org: 'Container CB',
     bio: '핸디소프트에서 개발과 DevOps영역을 담당하고 있습니다.',
     profileImage: byoungho_lee,
+  },
+  {
+    id: 'speaker-1',
+    name: '박상운',
+    org: 'Serverless Hero',
+    bio: 'AI기반 3D컨텐츠를 연구하는 스타트업의 Dev Lead이자 AWS Serverless Hero입니다. Serverless를 좋아하여 최대한 많은 문제를 Serverless로 풀어보고 있습니다. ',
+    profileImage: chris_park,
+  },
+  {
+    id: 'speaker-2',
+    name: '소성운',
+    org: 'AI Hero',
+    bio: '-',
+    profileImage: yanso,
+  },
+  {
+    id: 'speaker-3',
+    name: '신재현',
+    org: 'Community Hero',
+    bio: '-',
+    profileImage: sinsky,
   },
 ];
