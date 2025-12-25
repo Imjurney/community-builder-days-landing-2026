@@ -17,7 +17,7 @@ export default function Overview() {
     return (
         <section
             id="overview"
-            className="bg-bg pt-5 xl:pt-6 border-t border-b border-brand-stroke">
+            className="bg-bg   border-t border-b border-brand-stroke">
             <Container className="py-0 flex flex-col gap-16">
                 <div
                     ref={contentRef}
