@@ -98,6 +98,28 @@ export default function Schedule() {
 
         {/* 모바일: 세로 스택 레이아웃 */}
         <div className="xl:hidden relative">
+          {/* 모바일 트랙 헤더 */}
+          <div className="flex gap-4 mb-4 px-5">
+            {SCHEDULE_TRACKS.map((track) => {
+              const borderColor = (() => {
+                if (track.id === 'track1') return '#703FFF';
+                if (track.id === 'track2') return '#FF9900';
+                return '#FFFFFF';
+              })();
+
+              return (
+                <div
+                  key={track.id}
+                  className="flex-1 flex items-center justify-center h-11 pl-6"
+                  style={{ borderLeft: `4px solid ${borderColor}` }}>
+                  <p className="text-fancy-subtitle1 text-white">
+                    {track.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
           <div
             ref={mobileScheduleRef}
             className="flex flex-col w-full overflow-hidden"
@@ -234,7 +256,7 @@ export default function Schedule() {
 
           {/* 펼쳐보기 버튼 */}
           {showExpandButton && (
-            <div className=" px-5">
+            <div className="pt-8 px-5">
               <button
                 type="button"
                 onClick={() => setIsExpanded(!isExpanded)}
