@@ -7,33 +7,33 @@ export const SCHEDULE_TRACKS: Array<{
   label: string;
   bottomColor: string;
 }> = [
-  { id: 'track1', label: 'Track 1', bottomColor: 'bg-[var(--track-1)]' },
-  { id: 'track2', label: 'Track 2', bottomColor: 'bg-[var(--track-2)]' },
-  { id: 'track3', label: 'Track 3', bottomColor: 'bg-[var(--track-3)]' },
-];
+    { id: 'track1', label: 'Track 1', bottomColor: 'bg-[var(--track-1)]' },
+    { id: 'track2', label: 'Track 2', bottomColor: 'bg-[var(--track-2)]' },
+    { id: 'track3', label: 'Track 3', bottomColor: 'bg-[var(--track-3)]' },
+  ];
 
 export type ScheduleCell =
   | {
-      kind: 'session';
-      title: string;
-      speakerId: string;
-    }
+    kind: 'session';
+    title: string;
+    speakerId: string;
+  }
   | { kind: 'label'; title: string }
   | { kind: 'empty' };
 
 export type ScheduleRow =
   | {
-      time: string;
-      full: {
-        title: string;
-        tone?: 'muted' | 'brand' | 'break';
-        speakerId?: string;
-      };
-    }
-  | {
-      time: string;
-      cells: Record<ScheduleTrackId, ScheduleCell>;
+    time: string;
+    full: {
+      title: string;
+      tone?: 'muted' | 'brand' | 'break';
+      speakerId?: string;
     };
+  }
+  | {
+    time: string;
+    cells: Record<ScheduleTrackId, ScheduleCell>;
+  };
 
 // Helper function to get speaker by ID
 export function getSpeakerById(speakerId: string) {
@@ -72,7 +72,7 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
     time: '13:30 ~ 13:50',
     full: {
       title:
-        '소개 및 기조 연설 - 우리는 왜 커뮤니티에 남는가 (부제: EC2는 사람을 키우지 않는다)',
+        '키노트 - 우리는 왜 커뮤니티에 남는가 \'EC2는 사람을 키우지 않는다\'',
       tone: 'muted',
       speakerId: 'speaker-4',
     },

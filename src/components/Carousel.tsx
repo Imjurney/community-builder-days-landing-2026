@@ -116,7 +116,8 @@ export default function Carousel({
                 className={cn(
                     'flex overflow-x-auto overflow-y-hidden',
                     'scrollbar-hide',
-                    dragState.isDragging ? 'cursor-grabbing' : 'cursor-grab'
+                    dragState.isDragging ? 'cursor-grabbing' : 'cursor-grab',
+                    className?.includes('justify-center') ? 'justify-center' : ''
                 )}
                 style={{
                     scrollBehavior: dragState.isDragging ? 'auto' : 'smooth',

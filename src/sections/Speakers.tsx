@@ -72,8 +72,8 @@ export default function Speakers() {
                         {cbRows.map((rowSpeakers, rowIndex) => (
                             <Carousel
                                 key={rowIndex}
-                                className="pl-5 xl:pl-[115px] pr-5 xl:pr-[115px] border-t border-b border-zinc-700"
-                                itemWidth={332}
+                                className="pl-5 xl:pl-0 pr-5 xl:pr-0 xl:justify-center border-t border-b border-zinc-700"
+                                itemWidth={300}
                                 gap={0}
                                 showOverlay={false}>
                                 {rowSpeakers.map((speaker) => {
@@ -98,8 +98,8 @@ export default function Speakers() {
                             AWS Heroes
                         </h3>
                         <Carousel
-                            className="pl-5 xl:pl-[115px] pr-5 xl:pr-[115px] border-t border-b border-zinc-700"
-                            itemWidth={332}
+                            className="pl-5 xl:pl-0 pr-5 xl:pr-0 xl:justify-center border-t border-b border-zinc-700"
+                            itemWidth={300}
                             gap={0}
                             showOverlay={false}>
                             {heroes.map((speaker) => {
