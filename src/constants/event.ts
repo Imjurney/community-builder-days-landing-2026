@@ -8,8 +8,8 @@ export const EVENT: EventInfo = {
   contactEmail: 'hello@example.com',
   hero: {
     title: {
-      line1: 'AWS community',
-      line2: 'builders Day KOREA',
+      line1: 'AWS Community',
+      line2: 'Builders Day Korea 2026',
     },
     dateTime: '2026.01.24',
     location: 'CENTER FIELD, 18F, Seoul',
