@@ -4,45 +4,45 @@ import title from '@/assets/sectionTitle/title_section1.svg';
 import titleSm from '@/assets/sectionTitle/title_section1_sm.svg';
 
 export default function Overview() {
-  const contentRef = useFadeIn<HTMLDivElement>({
-    duration: 0.8,
-    delay: 0.2,
-  });
+    const contentRef = useFadeIn<HTMLDivElement>({
+        duration: 0.8,
+        delay: 0.2,
+    });
 
-  // const boxesRef = useStagger<HTMLDivElement>('.overview-box', {
-  //   duration: 0.6,
-  //   delay: 0.5,
-  //   stagger: 0.1,
-  //   from: { opacity: 0, y: 20 },
-  // });
+    // const boxesRef = useStagger<HTMLDivElement>('.overview-box', {
+    //   duration: 0.6,
+    //   delay: 0.5,
+    //   stagger: 0.1,
+    //   from: { opacity: 0, y: 20 },
+    // });
 
-  return (
-    <section
-      id="overview"
-      className="bg-bg pt-5 xl:pt-6 border-t border-b border-brand-stroke">
-      <Container className="py-0 flex flex-col gap-16">
-        <div
-          ref={contentRef}
-          className="relative">
-          {/* 콘텐츠 박스 */}
-          <img
-            className="mr-auto hidden xl:block"
-            src={title}
-            width={801}
-            height={416}
-            alt="Overview"
-          />
-          <img
-            width={360}
-            height={680}
-            className="w-full xl:hidden block"
-            src={titleSm}
-            alt="Overview"
-          />
-        </div>
+    return (
+        <section
+            id="overview"
+            className="bg-bg pt-5 xl:pt-6 border-t border-b border-brand-stroke">
+            <Container className="py-0 flex flex-col gap-16">
+                <div
+                    ref={contentRef}
+                    className="relative">
+                    {/* 콘텐츠 박스 */}
+                    <img
+                        className="mr-auto hidden xl:block"
+                        src={title}
+                        width={801}
+                        height={416}
+                        alt="Overview"
+                    />
+                    <img
+                        width={360}
+                        height={680}
+                        className="w-full xl:hidden block"
+                        src={titleSm}
+                        alt="Overview"
+                    />
+                </div>
 
-        {/* Overview 박스들 */}
-        {/* <div
+                {/* Overview 박스들 */}
+                {/* <div
           ref={boxesRef}
           className="grid grid-cols-2 lg:grid-cols-4 border border-brand-stroke">
           {OVERVIEW_ITEMS.map((item, index) => (
@@ -58,7 +58,7 @@ export default function Overview() {
             </div>
           ))}
         </div> */}
-      </Container>
-    </section>
-  );
+            </Container>
+        </section>
+    );
 }
