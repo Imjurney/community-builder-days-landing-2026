@@ -74,7 +74,7 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
     time: '13:30 ~ 13:50',
     full: {
       title:
-        '키노트 - 우리는 왜 커뮤니티에 남는가 \'EC2는 사람을 키우지 않는다\'',
+        '키노트 - 우리는 왜 커뮤니티에 남는가 (부제:EC2는 사람을 키우지 않는다)',
       tone: 'muted',
       speakerId: 'speaker-4',
       description: 'AWS 커뮤니티에 참여하는 의미와 가치에 대한 키노트 세션입니다.',

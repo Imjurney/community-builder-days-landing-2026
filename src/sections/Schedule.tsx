@@ -93,8 +93,8 @@ export default function Schedule() {
     return (
         <section
             id="schedule"
-            className="bg-bg py-20">
-            <Container className="py-0 flex flex-col gap-8 xl:gap-24">
+            className="bg-bg">
+            <Container className="py-0 flex flex-col gap-8 xl:gap-8">
                 <img
                     className="hidden xl:block"
                     src={title}
