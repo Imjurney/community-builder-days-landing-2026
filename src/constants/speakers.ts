@@ -11,6 +11,7 @@ import yanso from '@/assets/speaker/yanso.png';
 import seungho_song from '@/assets/speaker/seungho_song.jpg';
 import byoungho_lee from '@/assets/speaker/byoungho_lee.png';
 import woody_kwon from '@/assets/speaker/woody_kwon.jpg';
+import sinsky from '@/assets/speaker/sinsky.png';
 
 export const SPEAKERS: Speaker[] = [
   {
@@ -23,9 +24,16 @@ export const SPEAKERS: Speaker[] = [
   {
     id: 'speaker-2',
     name: '박상욱',
-    org: 'Machine Learning Hero',
+    org: 'AI Hero',
     bio: '-',
     profileImage: yanso,
+  },
+  {
+    id: 'speaker-3',
+    name: '신재현',
+    org: 'Community hero',
+    bio: '-',
+    profileImage: sinsky,
   },
   {
     id: 'speaker-3',
