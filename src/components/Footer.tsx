@@ -1,7 +1,6 @@
 import Container from '@/components/Container';
 import { EVENT } from '@/constants/event';
 import { NAV_ITEMS } from '@/constants/navigation';
-import { textFancySubtitle1 } from '@/lib/utils';
 
 export default function Footer() {
   return (
@@ -31,7 +30,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <ul className={textFancySubtitle1('flex flex-col gap-4 mr-[103px]')}>
+          <ul className="text-fancy-subtitle1 flex flex-col gap-4 mr-[103px]">
             {NAV_ITEMS.map((item, index) => (
               <li
                 className="cursor-pointer"

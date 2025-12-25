@@ -5,13 +5,6 @@ import title from '@/assets/sectionTitle/title_section4.svg';
 import subwayIcon from '@/assets/icons/subway.svg';
 import busIcon from '@/assets/icons/bus.svg';
 import { VENUE_DATA, DIRECTIONS_METHODS } from '@/constants/venue';
-import {
-  textBody1,
-  textFancyLargeTitle1,
-  textFancyLargeTitle2,
-  textLargeTitle1,
-  textTitle2,
-} from '@/lib/utils';
 
 const getIconSrc = (iconName: string) => {
   const iconMap: Record<string, string> = {
@@ -67,11 +60,11 @@ export default function Venue() {
             {/* 장소 정보 */}
             <div className="flex justify-between items-end w-full">
               <div>
-                <h3 className={textFancyLargeTitle2('text-white')}>
+                <h3 className="text-fancy-large-title2 text-white">
                   Center Field
                 </h3>
                 <div className="flex items-start justify-between. mt-[3px]">
-                  <div className={textTitle2('text-white')}>
+                  <div className="text-title2 text-white">
                     <p>{VENUE_DATA.address}</p>
                     <p>{VENUE_DATA.building}</p>
                   </div>
@@ -80,7 +73,7 @@ export default function Venue() {
               <button
                 data-size="medium"
                 className="px-3.5 py-2.5 bg-violet-600/60 rounded-2xl cursor-pointer backdrop-blur-[5px] inline-flex justify-center items-center">
-                <span className={textBody1('text-white')}>구글 지도 보기</span>
+                <span className="text-body1 text-white">구글 지도 보기</span>
               </button>
             </div>
 
@@ -98,10 +91,10 @@ export default function Venue() {
                       alt={method.title}
                       width={32}
                       height={32}
-                      className="flex-shrink-0"
+                      className="shrink-0"
                     />
 
-                    <ul className={textBody1('text-(--opacity-w040)')}>
+                    <ul className="text-body1 text-(--opacity-w040)">
                       {method.details.map((detail, idx) => (
                         <li key={idx}>{detail}</li>
                       ))}

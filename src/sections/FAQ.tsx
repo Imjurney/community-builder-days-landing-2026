@@ -5,7 +5,6 @@ import Container from '@/components/Container';
 import { FAQ as FAQ_ITEMS } from '@/constants/faq';
 import { useFadeIn } from '@/lib/gsap';
 import title from '@/assets/sectionTitle/title_section5.svg';
-import { textBody1, textTitle1 } from '@/lib/utils';
 import arrowUp from '@/assets/icons/ArrowUp.svg';
 import gsap from 'gsap';
 
@@ -76,9 +75,7 @@ export default function FAQ() {
               key={item.q}>
               <button
                 onClick={() => toggleItem(index)}
-                className={textTitle1(
-                  'text-white text-start flex justify-between w-full cursor-pointer'
-                )}>
+                className="text-title1 text-white text-start flex justify-between w-full cursor-pointer">
                 <span>{item.q}</span>
                 <img
                   src={arrowUp}
@@ -99,7 +96,7 @@ export default function FAQ() {
                   height: 0,
                   opacity: 0,
                 }}>
-                <p className={textBody1('mt-6 text-(--opacity-w060)')}>
+                <p className="text-body1 mt-6 text-(--opacity-w060)">
                   {item.a}
                 </p>
               </div>

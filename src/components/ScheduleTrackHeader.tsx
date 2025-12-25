@@ -1,5 +1,5 @@
 import { SCHEDULE_TRACKS } from '@/constants/schedule';
-import { cn, textFancyTitle1 } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 interface ScheduleTrackHeaderProps {
   track: (typeof SCHEDULE_TRACKS)[0];
@@ -9,7 +9,7 @@ export const ScheduleTrackHeader = ({ track }: ScheduleTrackHeaderProps) => {
   return (
     <th
       scope="col"
-      className={textFancyTitle1('relative text-white pb-6')}>
+      className="text-fancy-title1 relative text-white pb-6">
       {track.label}
       <div
         className={cn(

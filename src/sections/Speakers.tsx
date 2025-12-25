@@ -42,11 +42,7 @@ export default function Speakers() {
             {SPEAKERS.map((speaker, index) => (
               <SpeakerCard
                 key={index}
-                org={speaker.org}
-                name={speaker.name}
-                title={speaker.title}
-                topic={speaker.topic}
-                profileImage={speaker.profileImage}
+                {...speaker}
               />
             ))}
           </Carousel>
@@ -59,11 +55,7 @@ export default function Speakers() {
             {SPEAKERS.map((speaker, index) => (
               <SpeakerCard
                 key={`second-${index}`}
-                org={speaker.org}
-                name={speaker.name}
-                title={speaker.title}
-                topic={speaker.topic}
-                profileImage={speaker.profileImage}
+                {...speaker}
               />
             ))}
           </Carousel>

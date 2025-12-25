@@ -1,4 +1,4 @@
-import sonu_kim_sl from '@/assets/spearker/sonu_kim_sl.jpg';
+import sonu_kim_sl from '@/assets/speaker/sonu_kim_sl.jpg';
 
 export type ScheduleTrackId = 'track1' | 'track2' | 'track3';
 

@@ -1,5 +1,4 @@
 import { NAV_ITEMS } from '@/constants/navigation';
-import { textFancySubtitle1 } from '@/lib/utils';
 
 export default function Navbar() {
   return (
@@ -19,9 +18,7 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className={textFancySubtitle1(
-                'text-white transition-colors hover:text-primary whitespace-nowrap'
-              )}>
+              className="text-fancy-subtitle1 text-white transition-colors hover:text-primary whitespace-nowrap">
               {item.label}
             </a>
           ))}

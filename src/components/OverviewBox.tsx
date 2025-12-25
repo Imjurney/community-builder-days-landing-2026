@@ -1,5 +1,3 @@
-import { textFancyTitle1 } from '@/lib/utils';
-
 interface OverviewBoxProps {
   title: string;
   iconLg: string;
@@ -11,11 +9,10 @@ export default function OverviewBox({
   title,
   iconLg,
   iconSm,
-  index,
 }: OverviewBoxProps) {
   return (
-    <div className="relative w-full h-86 bg-bg border-r border-b border-brand-stroke last:border-r-0 sm:[&:nth-child(2n)]:border-r-0 lg:[&:nth-child(4n)]:border-r-0 lg:border-r">
-      <p className={textFancyTitle1('absolute left-6 top-6 text-white')}>
+    <div className="relative w-full h-86 bg-bg border-r border-b border-brand-stroke last:border-r-0 sm:nth-[2n]:border-r-0 lg:nth-[4n]:border-r-0 lg:border-r">
+      <p className="text-fancy-title1 absolute left-6 top-6 text-white">
         {title}
       </p>
       <div className="absolute bottom-2 left-2 w-40 h-40 flex items-center justify-center">
@@ -29,7 +26,7 @@ export default function OverviewBox({
         <img
           width={160}
           height={160}
-          src={iconLg}
+          src={iconSm}
           alt={title}
           className="hidden lg:block"
         />
