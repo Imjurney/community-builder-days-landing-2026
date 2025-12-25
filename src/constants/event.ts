@@ -13,6 +13,6 @@ export const EVENT: EventInfo = {
     },
     dateTime: '2026.01.24 (Sat) 13:00 - 18:00',
     location: 'CENTER FIELD, 18F, Seoul',
-    ctaText: '참가하러 가기',
+    ctaText: '참가신청',
   },
 };
