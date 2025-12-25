@@ -57,9 +57,9 @@ export default function SpeakerCard({
           alt=""
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 flex flex-col justify-end p-3 xl:p-6 text-white pointer-events-none">
+        <div className="absolute inset-0 flex flex-col justify-end p-3 xl:p-6 pb-6 xl:pb-10 text-white pointer-events-none">
           {/* 상단: 이름과 직책 */}
-          <div className="xl:mb-6 mb-3">
+          <div className="xl:mb-4 mb-3">
             <h3 className="text-title1 text-white">{name}</h3>
             <p className="text-fancy-body1 text-white">{org}</p>
           </div>
