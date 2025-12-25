@@ -1,6 +1,6 @@
-import { useState, useRef, useCallback } from "react";
-import { cn } from "@/lib/utils";
-import { useDrag } from "@/hooks/useDrag";
+import { useState, useRef, useCallback } from 'react';
+import { cn } from '@/lib/utils';
+import { useDrag } from '@/hooks/useDrag';
 
 interface CarouselProps {
   children: React.ReactNode[];
@@ -48,29 +48,27 @@ export default function Carousel({
     (dragState.isDragging ? dragState.deltaX : 0);
 
   return (
-    <div className={cn("relative overflow-hidden", className)}>
+    <div className={cn('relative overflow-hidden', className)}>
       {/* 캐로셀 컨테이너 */}
       <div
         ref={containerRef}
         className={cn(
-          "flex transition-transform duration-300 ease-out select-none overflow-x-scroll",
-          dragState.isDragging ? "cursor-grabbing" : "cursor-grab"
+          'flex transition-transform duration-300 ease-out select-none overflow-x-hidden',
+          dragState.isDragging ? 'cursor-grabbing' : 'cursor-grab'
         )}
         style={{
           transform: `translateX(${translateX}px)`,
-          transitionDuration: dragState.isDragging ? "0ms" : "300ms",
+          transitionDuration: dragState.isDragging ? '0ms' : '300ms',
         }}
-        {...dragHandlers}
-      >
+        {...dragHandlers}>
         {children.map((child, index) => (
           <div
             key={index}
             className="shrink-0 pointer-events-none"
             style={{
               width: `${itemWidth}px`,
-              marginRight: index < children.length - 1 ? `${gap}px` : "0",
-            }}
-          >
+              marginRight: index < children.length - 1 ? `${gap}px` : '0',
+            }}>
             <div className="pointer-events-auto">{child}</div>
           </div>
         ))}

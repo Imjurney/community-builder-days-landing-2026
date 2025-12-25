@@ -2,7 +2,7 @@ export const VENUE_DATA = {
   name: 'Center Field',
   address: '서울특별시 강남구 테헤란로 231',
   building: '센터필드 EAST 18층',
-  mapUrl: 'https://maps.google.com/?q=센터필드+EAST+18층',
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=센터필드+EAST',
 };
 
 export const DIRECTIONS_METHODS = [

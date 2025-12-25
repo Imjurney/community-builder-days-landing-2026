@@ -70,11 +70,14 @@ export default function Venue() {
                   </div>
                 </div>
               </div>
-              <button
+              <a
+                href={VENUE_DATA.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 data-size="medium"
-                className="px-3.5 py-2.5 bg-violet-600/60 rounded-2xl cursor-pointer backdrop-blur-[5px] inline-flex justify-center items-center">
+                className="px-3.5 py-2.5 bg-violet-600/60 rounded-2xl cursor-pointer backdrop-blur-[5px] inline-flex justify-center items-center hover:bg-violet-600/80 transition-colors">
                 <span className="text-body1 text-white">구글 지도 보기</span>
-              </button>
+              </a>
             </div>
 
             {/* 교통 정보 */}
