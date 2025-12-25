@@ -34,10 +34,9 @@ export default function Footer() {
           <ul className={textFancySubtitle1('flex flex-col gap-4 mr-[103px]')}>
             {NAV_ITEMS.map((item, index) => (
               <li
-                role="button"
                 className="cursor-pointer"
                 key={item + index.toString()}>
-                {item.label}
+                <a href={item.href}>{item.label}</a>
               </li>
             ))}
           </ul>

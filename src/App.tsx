@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Hero from '@/sections/Hero';
-import Highlights from '@/sections/Highlights';
+import Overview from '@/sections/Overview';
 import Speakers from '@/sections/Speakers';
 import Schedule from '@/sections/Schedule';
 import Venue from '@/sections/Venue';
@@ -15,7 +15,7 @@ export default function App() {
       <StickyCountdown />
       <main>
         <Hero />
-        <Highlights />
+        <Overview />
         <Speakers />
         <Schedule />
         <Venue />

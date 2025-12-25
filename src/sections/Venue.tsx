@@ -5,12 +5,18 @@ import title from '@/assets/sectionTitle/title_section4.svg';
 import subwayIcon from '@/assets/icons/subway.svg';
 import busIcon from '@/assets/icons/bus.svg';
 import { VENUE_DATA, DIRECTIONS_METHODS } from '@/constants/venue';
+import {
+  textBody1,
+  textFancyLargeTitle1,
+  textFancyLargeTitle2,
+  textLargeTitle1,
+  textTitle2,
+} from '@/lib/utils';
 
 const getIconSrc = (iconName: string) => {
   const iconMap: Record<string, string> = {
     subway: subwayIcon,
     bus: busIcon,
-    car: '🚗',
   };
   return iconMap[iconName];
 };
@@ -29,77 +35,75 @@ export default function Venue() {
   return (
     <section
       id="venue"
-      className="bg-bg border-t border-b border-brand-stroke">
-      <Container className="py-0 flex flex-col">
+      className="bg-bg py-20 border border-brand-stroke">
+      <Container className="py-0 flex flex-col border border-(--stroke)">
+        {/* 타이틀 이미지 */}
         <img
           className="ml-auto"
           src={title}
-          width={554}
+          width={545}
           height={320}
           alt="오시는 길"
         />
 
-        <div className="flex">
+        <div className="flex gap-0">
           {/* 지도 */}
           <div
             ref={mapRef}
-            className="border border-brand-stroke">
+            className="flex-1 border-r border-brand-stroke">
             <img
-              width={831}
-              height={439}
+              width={616}
+              height={416}
               src={mapImage}
               alt="오시는 길 지도"
-              className="object-cover"
+              className="w-full h-full"
             />
           </div>
 
           {/* 정보 */}
           <div
             ref={contentRef}
-            className="w-[545px] flex flex-col justify-center gap-8">
+            className="flex flex-col gap-16 justify-center px-14 py-18 w-[545px]">
             {/* 장소 정보 */}
-            <div className="space-y-4">
-              <h3 className="text-title1 text-white">{VENUE_DATA.name}</h3>
-              <div className="space-y-2 text-muted-fg">
-                <p className="flex items-center gap-2">
-                  <span>📍</span>
-                  {VENUE_DATA.address}
-                </p>
+            <div className="flex justify-between items-end w-full">
+              <div>
+                <h3 className={textFancyLargeTitle2('text-white')}>
+                  Center Field
+                </h3>
+                <div className="flex items-start justify-between. mt-[3px]">
+                  <div className={textTitle2('text-white')}>
+                    <p>{VENUE_DATA.address}</p>
+                    <p>{VENUE_DATA.building}</p>
+                  </div>
+                </div>
               </div>
+              <button
+                data-size="medium"
+                className="px-3.5 py-2.5 bg-violet-600/60 rounded-2xl cursor-pointer backdrop-blur-[5px] inline-flex justify-center items-center">
+                <span className={textBody1('text-white')}>구글 지도 보기</span>
+              </button>
             </div>
 
             {/* 교통 정보 */}
-            <div className="space-y-4">
+            <div className="flex flex-col gap-6">
               {DIRECTIONS_METHODS.map((method) => {
                 const iconSrc = getIconSrc(method.icon);
-                const isEmoji =
-                  typeof iconSrc === 'string' && iconSrc.length === 1;
 
                 return (
                   <div
                     key={method.title}
-                    className="p-4 rounded-xl bg-card border border-brand-stroke/60">
-                    <h4 className="text-title2 text-white mb-2 flex items-center gap-2">
-                      {isEmoji ? (
-                        <span>{iconSrc}</span>
-                      ) : (
-                        <img
-                          src={iconSrc}
-                          alt={method.title}
-                          width={24}
-                          height={24}
-                        />
-                      )}
-                      {method.title}
-                    </h4>
-                    <ul className="space-y-1 text-muted-fg text-sm">
+                    className="flex items-center gap-4">
+                    <img
+                      src={iconSrc}
+                      alt={method.title}
+                      width={32}
+                      height={32}
+                      className="flex-shrink-0"
+                    />
+
+                    <ul className={textBody1('text-(--opacity-w040)')}>
                       {method.details.map((detail, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2">
-                          <span className="text-primary">•</span>
-                          {detail}
-                        </li>
+                        <li key={idx}>{detail}</li>
                       ))}
                     </ul>
                   </div>

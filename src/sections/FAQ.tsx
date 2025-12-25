@@ -77,7 +77,7 @@ export default function FAQ() {
               <button
                 onClick={() => toggleItem(index)}
                 className={textTitle1(
-                  'text-white text-start flex justify-between w-full'
+                  'text-white text-start flex justify-between w-full cursor-pointer'
                 )}>
                 <span>{item.q}</span>
                 <img

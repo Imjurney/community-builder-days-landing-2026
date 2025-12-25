@@ -1,9 +1,6 @@
 import Container from '@/components/Container';
 import { useSlideUp, useFadeIn } from '@/lib/gsap';
-
-// 시계 아이콘 SVG
-const clockIcon =
-  'http://localhost:3845/assets/25a4df3a710e40a4788c16f4a87c6ed56f9c66ff.svg';
+import clockIcon from '@/assets/icons/clock.svg';
 
 export default function Hero() {
   // GSAP 애니메이션 refs
@@ -46,7 +43,7 @@ export default function Hero() {
             ref={titleRef}
             className="text-fancy-large-title1 text-white">
             <p className="mb-0">AWS community</p>
-            <p className="mb-0">builder's day KOREA</p>
+            <p className="mb-0">builders day KOREA</p>
           </div>
 
           {/* 날짜 및 장소 정보 */}
@@ -55,9 +52,10 @@ export default function Hero() {
             className="flex gap-2 items-center">
             <div className="w-8 h-8 flex items-center justify-center">
               <img
+                width={32}
+                height={32}
                 src={clockIcon}
                 alt="시계 아이콘"
-                className="w-6 h-6"
               />
             </div>
             <p className="text-english-title3 text-white">

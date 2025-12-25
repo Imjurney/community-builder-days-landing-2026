@@ -1,7 +1,8 @@
 export const VENUE_DATA = {
-  name: 'Community Builder Days 2025',
-  address: '서울시 강남구 테헤란로 231 센터필드 EAST 18층',
-  phone: '02-1234-5678',
+  name: 'Center Field',
+  address: '서울특별시 강남구 테헤란로 231',
+  building: '센터필드 EAST 18층',
+  mapUrl: 'https://maps.google.com/?q=센터필드+EAST+18층',
 };
 
 export const DIRECTIONS_METHODS = [
@@ -16,14 +17,6 @@ export const DIRECTIONS_METHODS = [
   {
     icon: 'bus',
     title: '버스',
-    details: [
-      '강남02, 강남03 (강남역 정류장)',
-      '강남04, 강남05 (삼성역 정류장)',
-    ],
-  },
-  {
-    icon: 'car',
-    title: '자동차',
-    details: ['지하 3층 주차장 (200대)', '시간당 3,000원'],
+    details: ['역삼역 주변 다양한 버스 정차'],
   },
 ];

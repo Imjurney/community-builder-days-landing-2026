@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+  <path d="M103.333 140H50V130H103.333V140Z" fill="white"/>
+  <path d="M50 130H40V120H50V130Z" fill="white"/>
+  <path d="M113.333 130H103.333V120H113.333V130Z" fill="white"/>
+  <path d="M40 120H30V110H40V120Z" fill="white"/>
+  <path d="M123.333 120H113.333V110H123.333V120Z" fill="white"/>
+  <path d="M30 110H20V50H30V110Z" fill="white"/>
+  <path d="M70 53.3333V63.3333H60V93.3333H70V103.333H60V106.667H50V53.3333H70Z" fill="white"/>
+  <path d="M86.6667 93.3333H70V83.3333H86.6667V93.3333Z" fill="white"/>
+  <path d="M133.333 83.3333H136.667V93.3333H120V83.3333H123.333V50H133.333V83.3333Z" fill="white"/>
+  <path d="M96.6667 83.3333H86.6667V73.3333H96.6667V83.3333Z" fill="white"/>
+  <path d="M120 83.3333H110V73.3333H120V83.3333Z" fill="white"/>
+  <path d="M146.667 83.3333H136.667V73.3333H146.667V83.3333Z" fill="white"/>
+  <path d="M86.6667 73.3333H70V63.3333H86.6667V73.3333Z" fill="white"/>
+  <path d="M40 50H30V40H40V50Z" fill="white"/>
+  <path d="M123.333 50H113.333V40H123.333V50Z" fill="white"/>
+  <path d="M50 40H40V30H50V40Z" fill="white"/>
+  <path d="M113.333 40H103.333V30H113.333V40Z" fill="white"/>
+  <path d="M103.333 30H50V20H103.333V30Z" fill="white"/>
+</svg>
