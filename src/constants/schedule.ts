@@ -104,7 +104,7 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
         kind: 'session',
         title:
           'Hero 리인벤트 Recap: 신재현 : DevOps Agent, Security Agent + RDS Savings Paln',
-        speakerId: 'speaker-3',
+        speakerId: 'speaker-2',
         description: 'AWS re:Invent에서 발표된 DevOps Agent, Security Agent 및 RDS Savings Plan에 대한 주요 내용과 실무 적용 방법을 소개합니다.',
       },
     },
@@ -131,7 +131,7 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
       track3: {
         kind: 'session',
         title: 'Hero 리인벤트 Recap: Nova 2, Nova Forge + AI',
-        speakerId: 'speaker-2',
+        speakerId: 'speaker-1',
         description: 'AWS re:Invent에서 발표된 Nova 2, Nova Forge 및 AI 관련 최신 기술과 서비스에 대한 심층 분석을 제공합니다.',
       },
     },
@@ -177,7 +177,7 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
         kind: 'session',
         title:
           'Hero 리인벤트 recap: AWS Lambda Durable Function & Lambda Managed Instance',
-        speakerId: 'speaker-1',
+        speakerId: 'speaker-3',
         description: 'AWS re:Invent에서 발표된 Lambda Durable Function과 Lambda Managed Instance의 새로운 기능과 활용 사례를 공유합니다.',
       },
       track2: {
