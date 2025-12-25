@@ -21,9 +21,9 @@ export default function Overview() {
             <Container className="py-0 flex flex-col gap-16">
                 <div
                     ref={contentRef}
-                    className="relative">
-                    {/* Desktop version */}
-                    <div className="hidden xl:block w-[801px] h-[416px] relative overflow-hidden">
+                    className="relative flex flex-col xl:flex-row gap-3 xl:gap-5">
+                    {/* Desktop version - Left side */}
+                    <div className="hidden xl:block w-[801px] h-[416px] relative overflow-hidden flex-shrink-0">
                         {/* Grid pattern */}
                         <div className="absolute inset-0">
                             {/* Vertical lines */}
@@ -70,6 +70,24 @@ export default function Overview() {
                                 각자의 전문 분야에 대한
                                 <br />
                                 세션과 인사이트를 제공하는 행사입니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Right side - AWS Community Builder Introduction */}
+                    <div className="hidden xl:flex flex-col justify-center text-white flex-1 px-8">
+                        <h3 className="text-[32px] font-bold mb-6" style={{ fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
+                            AWS Community Builder란?
+                        </h3>
+                        <div className="space-y-4 text-lg leading-relaxed" style={{ fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
+                            <p>
+                                AWS Community Builder 프로그램은 AWS에 대한 열정과 지식을 공유하는 기술 커뮤니티 리더들을 위한 글로벌 프로그램입니다.
+                            </p>
+                            <p>
+                                이 프로그램은 AWS 전문가들이 기술 콘텐츠를 작성하고, 네트워킹하며, AWS와 직접 소통할 수 있는 기회를 제공합니다.
+                            </p>
+                            <p>
+                                Community Builder들은 자신의 전문 분야에서 AWS 서비스와 모범 사례를 공유하며, 커뮤니티의 성장과 발전에 기여합니다.
                             </p>
                         </div>
                     </div>
