@@ -128,8 +128,8 @@ export function SessionBottomSheet({
       <div
         ref={sheetRef}
         className={cn(
-          "fixed bottom-0 left-0 right-0 z-50 max-h-[80vh] overflow-hidden",
-          "rounded-t-2xl shadow-2xl",
+          "fixed bottom-0 left-1/2 z-50 max-h-[80vh] overflow-hidden w-full max-w-[430px]",
+          "rounded-t-2xl shadow-2xl -translate-x-1/2",
           getTrackBackground(),
           "transform transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isAnimating
