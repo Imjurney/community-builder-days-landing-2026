@@ -106,10 +106,10 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
       track3: {
         kind: "session",
         title:
-          "Hero 리인벤트 Recap: 신재현 : DevOps Agent, Security Agent + 데이터베이스 Savings Plan",
+          "Hero 리인벤트 Recap: 운영 효율과 비용, 두 마리 토끼 잡기 (DevOps Agent, Security Agent, DB SP)",
         speakerId: "speaker-2",
         description:
-          "AWS re:Invent에서 발표된 DevOps Agent, Security Agent 및 데이터베이스 Savings Plan에 대한 주요 내용과 실무 적용 방법을 소개합니다.",
+          "re:Invent에서 발표된 신규 서비스 중 운영(Ops)과 비용 효율화에 초점을 맞춘 핵심 업데이트를 소개합니다. DevOps 생산성을 높여줄 도구들과 새로운 Security Agent, 그리고 많은 분이 기다리셨을 Database Savings Plan의 세부 내용을 실무 관점에서 짚어드립니다.",
       },
     },
   },

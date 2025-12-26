@@ -106,7 +106,7 @@ export const SPEAKERS: Speaker[] = [
     id: "speaker-2",
     name: "신재현",
     org: "Community",
-    bio: "-",
+    bio: " AWS 커뮤니티 히어로로서 SRE와 FinOps 지식을 바탕으로, 누구나 클라우드를 더 효율적이고 스마트하게 활용할 수 있도록 돕고 있습니다.",
     profileImage: sinsky,
     role: "hero",
   },
