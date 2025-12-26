@@ -58,11 +58,12 @@ export default function Hero() {
               <img width={32} height={32} src={clockIcon} alt="시계 아이콘" />
             </div>
             <p className="hero-time text-white">
-              {EVENT.hero.dateTime}, {EVENT.hero.location.split(", ")[0]},{" "}
-              <br className="xl:hidden" />
+              {EVENT.hero.dateTime},<br className="xl:hidden" />{" "}
+              {EVENT.hero.location.split(", ")[0]},
               {EVENT.hero.location.split(", ").slice(1).join(", ")}
             </p>
           </div>
+
           <a href={EVENT.registerUrl} target="_blank" rel="noopener noreferrer">
             <button
               type="button"

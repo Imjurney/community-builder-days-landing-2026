@@ -1,6 +1,6 @@
-import { cn } from '@/lib/utils';
-import graphicImage from '@/assets/graphic.svg';
-import { Speaker } from '@/types/event';
+import { cn } from "@/lib/utils";
+import graphicImage from "@/assets/graphic.svg";
+import { Speaker } from "@/types/event";
 
 interface SpeakerCardProps extends Speaker {
   className?: string;
@@ -31,15 +31,16 @@ export default function SpeakerCard({
     <div
       onClick={handleClick}
       className={cn(
-        'relative w-[260px] h-[260px] xl:w-[332px] xl:h-[322px] overflow-hidden group',
+        "relative w-[260px] h-[260px] xl:w-[300px] xl:h-[300px] overflow-hidden group",
         className
-      )}>
+      )}
+    >
       {/* 프로필 이미지 */}
-      <div className="absolute z-1 top-0 left-0 w-[260px] h-[260px] xl:w-[332px] xl:h-[332px] bg-linear-to-br from-slate-700 to-slate-900">
+      <div className="absolute z-1 top-0 left-0 w-[260px] h-[260px] xl:w-[300px] xl:h-[300px] bg-linear-to-br from-slate-700 to-slate-900">
         <img
           onError={(e) => {
             const target = e.target as HTMLImageElement;
-            target.style.display = 'none';
+            target.style.display = "none";
           }}
           src={profileImage}
           alt={`${name} 프로필`}
@@ -50,31 +51,21 @@ export default function SpeakerCard({
       {/* 그래픽 배경 - 모바일: 클릭 시, 데스크톱: 호버 시 올라옴 */}
       <div
         className={cn(
-          'absolute z-10 bottom-0 left-0 w-[260px] h-[260px] xl:w-[332px] xl:h-[332px] transform transition-transform duration-300 ease-out',
-          'xl:translate-y-full xl:group-hover:translate-y-0',
-          isActive ? 'translate-y-0' : 'translate-y-full'
-        )}>
+          "absolute z-10 bottom-0 left-0 w-[260px] h-[260px] xl:w-[300px] xl:h-[300px] transform transition-transform duration-300 ease-out",
+          "xl:translate-y-full xl:group-hover:translate-y-0",
+          isActive ? "translate-y-0" : "translate-y-full"
+        )}
+      >
         <img
           src={graphicImage}
           alt=""
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-75"
         />
         <div className="absolute inset-0 flex flex-col justify-end p-3 xl:p-6 pb-6 xl:pb-10 text-white pointer-events-none">
           {/* 상단: 이름과 직책 */}
           <div className="mb-2 xl:mb-3">
-            {/* 세션 제목 */}
-            {sessions.length > 0 && (
-              <div className="mt-1 xl:mt-2">
-                <span className="text-gray-900 font-semibold">세선명</span>
-                {sessions.map((session, index) => (
-                  <p
-                    key={index}
-                    className="text-fancy-caption text-gray-900">
-                    {session}
-                  </p>
-                ))}
-              </div>
-            )}
+            <h3 className="text-title1 text-white">{name}</h3>
+            <p className="text-fancy-body1 text-white">{org}</p>
           </div>
 
           {/* 하단: 소개 */}
@@ -89,12 +80,23 @@ export default function SpeakerCard({
       {/* 스피커 정보 (이미지 위 오버레이) - 그래픽 오버레이가 없을 때만 표시 */}
       <div
         className={cn(
-          'absolute z-1 bottom-0 left-0 right-0 w-[260px] xl:w-full bg-linear-to-t from-black/80 via-black/40 to-transparent pt-8 pb-3 xl:pb-6 px-3 xl:px-6 text-white transition-opacity duration-300',
-          'xl:group-hover:opacity-0',
-          isActive ? 'opacity-0' : 'opacity-100'
-        )}>
+          "absolute z-1 bottom-0 left-0 right-0 w-[260px] xl:w-full bg-linear-to-t from-black/80 via-black/40 to-transparent pt-8 pb-3 xl:pb-6 px-3 xl:px-6 text-white transition-opacity duration-300",
+          "xl:group-hover:opacity-0",
+          isActive ? "opacity-0" : "opacity-100"
+        )}
+      >
         <h3 className="text-title1 text-white">{name}</h3>
         <p className="text-fancy-body1 text-white">{org}</p>
+        {/* 세션 제목 */}
+        {sessions.length > 0 && (
+          <div className="mt-1 xl:mt-2">
+            {sessions.map((session, index) => (
+              <p key={index} className="text-fancy-caption text-neutral-200">
+                {session}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

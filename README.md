@@ -1,4 +1,4 @@
-# Community Builder Days 2026
+# Community Builders Day 2026
 
 커뮤니티 행사를 위한 정적 랜딩 페이지 템플릿입니다. 모든 콘텐츠 데이터는 `src/constants/`에서 중앙 관리되어 쉽게 커스터마이징할 수 있습니다.
 
@@ -88,7 +88,7 @@ pnpm preview
 
 ```typescript
 export const EVENT: EventInfo = {
-  name: 'Community Builder Days 2025',
+  name: 'Community Builders Day 2026',
   startAt: '2026-01-24T00:00:00+09:00',
   registerUrl: 'https://example.com/register',
   hero: {
@@ -96,7 +96,7 @@ export const EVENT: EventInfo = {
       line1: 'AWS community',
       line2: 'builders day KOREA',
     },
-    dateTime: '2026.01.24',
+    dateTime: '2026.01.24 (Sat)',
     location: 'CENTER FIELD, 18F, Seoul',
     ctaText: '참가하러 가기',
   },

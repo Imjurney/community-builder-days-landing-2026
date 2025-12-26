@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* ============================================
    폰트 로딩 (@font-face)
@@ -6,16 +6,16 @@
 
 /* Amazon Ember Duospace 폰트 로딩 */
 @font-face {
-  font-family: 'Amazon Ember Duospace';
-  src: url('/amazon-ember/Amazon Ember Duospace.ttf') format('truetype');
+  font-family: "Amazon Ember Duospace";
+  src: url("/amazon-ember/Amazon Ember Duospace.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Amazon Ember Duospace';
-  src: url('/amazon-ember/Amazon Ember Duospace Bold.ttf') format('truetype');
+  font-family: "Amazon Ember Duospace";
+  src: url("/amazon-ember/Amazon Ember Duospace Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -115,7 +115,7 @@ button {
 
 /* Korean/Large title1 */
 .text-large-title1 {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 60px;
   font-style: normal;
@@ -126,7 +126,7 @@ button {
 
 /* Korean/Title1 */
 .text-title1 {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 24px;
   font-style: normal;
@@ -137,7 +137,7 @@ button {
 
 /* Korean/Title2 */
 .text-title2 {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 20px;
   font-style: normal;
@@ -148,7 +148,7 @@ button {
 
 /* Korean/Body1 */
 .text-body1 {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -158,8 +158,8 @@ button {
 
 /* English/Title3 */
 .text-english-title3 {
-  font-family: 'Amazon Ember Duospace', 'JetBrains Mono', 'Fira Code',
-    'Consolas', 'Monaco', monospace;
+  font-family: "Amazon Ember Duospace", "JetBrains Mono", "Fira Code",
+    "Consolas", "Monaco", monospace;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -218,7 +218,7 @@ button {
 
 /* Korean/Large title1 */
 .text-large-title1 {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 60px;
   font-style: normal;
@@ -229,7 +229,7 @@ button {
 
 /* Korean/Title1 */
 .text-title1 {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 24px;
   font-style: normal;
@@ -240,7 +240,7 @@ button {
 
 /* Korean/Title2 */
 .text-title2 {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 20px;
   font-style: normal;
@@ -251,7 +251,7 @@ button {
 
 /* Korean/Body1 */
 .text-body1 {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -261,8 +261,8 @@ button {
 
 /* English/Title3 */
 .text-english-title3 {
-  font-family: 'Amazon Ember Duospace', 'JetBrains Mono', 'Fira Code',
-    'Consolas', 'Monaco', monospace;
+  font-family: "Amazon Ember Duospace", "JetBrains Mono", "Fira Code",
+    "Consolas", "Monaco", monospace;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -272,7 +272,7 @@ button {
 
 /* Fancy/Large Title1 */
 .text-fancy-large-title1 {
-  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
   font-size: 96px;
   font-style: normal;
   font-weight: 600;
@@ -281,7 +281,7 @@ button {
 
 /* Fancy/Large Title2 */
 .text-fancy-large-title2 {
-  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
   font-size: 48px;
   font-style: normal;
   font-weight: 400;
@@ -290,7 +290,7 @@ button {
 
 /* Fancy/Title1 */
 .text-fancy-title1 {
-  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -299,7 +299,7 @@ button {
 
 /* Fancy/Subtitle1 */
 .text-fancy-subtitle1 {
-  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -308,7 +308,7 @@ button {
 
 /* Fancy/Body1 */
 .text-fancy-body1 {
-  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -317,7 +317,7 @@ button {
 
 /* Fancy/Timer */
 .text-fancy-timer {
-  font-family: 'GalmuriMono9', 'Courier New', monospace;
+  font-family: "GalmuriMono9", "Courier New", monospace;
   font-size: 48px;
   font-style: normal;
   font-weight: 400;
@@ -327,7 +327,7 @@ button {
 
 /* Fancy/Timer2 (Mobile) */
 .text-fancy-timer2 {
-  font-family: 'GalmuriMono9', 'Courier New', monospace;
+  font-family: "GalmuriMono9", "Courier New", monospace;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
@@ -337,7 +337,7 @@ button {
 
 /* Hero Title - Responsive */
 .hero-title {
-  font-family: 'Pixelify Sans', 'Comic Sans MS', cursive;
+  font-family: "Pixelify Sans", "Comic Sans MS", cursive;
   font-size: 48px;
   font-style: normal;
   font-weight: 400;
@@ -354,8 +354,8 @@ button {
 
 /* Hero Time - Responsive */
 .hero-time {
-  font-family: 'Amazon Ember Duospace', 'JetBrains Mono', 'Fira Code',
-    'Consolas', 'Monaco', monospace;
+  font-family: "Amazon Ember Duospace", "JetBrains Mono", "Fira Code",
+    "Consolas", "Monaco", monospace;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -373,7 +373,7 @@ button {
 
 /* Hero Button - Responsive */
 .hero-button {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -392,7 +392,7 @@ button {
 
 /* FAQ List Title - Responsive */
 .faq-list-title {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -411,7 +411,7 @@ button {
 
 /* Speaker Bio - Responsive */
 .speaker-bio {
-  font-family: 'Apple SD Gothic Neo', -apple-system, BlinkMacSystemFont,
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
     sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -436,4 +436,14 @@ button {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
+}
+/* Korean/Title0 - 32px */
+.text-title0 {
+  font-family: "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px; /* 150% */
+  letter-spacing: -0.64px;
 }

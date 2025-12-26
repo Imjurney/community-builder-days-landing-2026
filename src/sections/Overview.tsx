@@ -1,7 +1,8 @@
-import Container from '@/components/Container';
-import { useFadeIn } from '@/lib/gsap';
-import title from '@/assets/sectionTitle/title_section1.svg';
-import titleSm from '@/assets/sectionTitle/title_section1_sm.svg';
+import Container from "@/components/Container";
+import ProgramMissionCard from "@/components/ProgramMissionCard";
+import ProgramMissionCardMobile from "@/components/ProgramMissionCardMobile";
+import { useFadeIn } from "@/lib/gsap";
+import { OVERVIEW_DATA } from "@/constants/overview";
 
 export default function Overview() {
   const contentRef = useFadeIn<HTMLDivElement>({
@@ -19,25 +20,46 @@ export default function Overview() {
   return (
     <section
       id="overview"
-      className="bg-bg pt-5 xl:pt-6 border-t border-b border-brand-stroke">
+      className="bg-bg border-t border-b border-brand-stroke xl:pt-5"
+    >
       <Container className="py-0 flex flex-col gap-16">
         <div
           ref={contentRef}
-          className="relative">
-          {/* 콘텐츠 박스 */}
-          <img
-            className="mr-auto hidden xl:block"
-            src={title}
-            width={801}
-            height={416}
-            alt="Overview"
+          className="relative flex flex-col xl:flex-row gap-3 xl:gap-5"
+        >
+          {/* Desktop version - Left side */}
+          <ProgramMissionCard
+            title={OVERVIEW_DATA.programMission.title}
+            subtitle={OVERVIEW_DATA.programMission.subtitle}
+            description={OVERVIEW_DATA.programMission.description}
           />
-          <img
-            width={360}
-            height={680}
-            className="w-full xl:hidden block"
-            src={titleSm}
-            alt="Overview"
+
+          {/* Right side - AWS Community Builder Introduction */}
+          <div className="hidden xl:flex flex-col justify-center text-white flex-1 px-8">
+            <h3 className="text-title0 mb-6">
+              {OVERVIEW_DATA.communityBuilder.title}
+            </h3>
+            <div className="space-y-6 text-body1">
+              {OVERVIEW_DATA.communityBuilder.description
+                .split("\n\n")
+                .map((paragraph, index) => (
+                  <p key={index} className="leading-relaxed">
+                    {paragraph.split("\n").map((line, lineIndex) => (
+                      <span key={lineIndex}>
+                        {line}
+                        {lineIndex < paragraph.split("\n").length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
+                ))}
+            </div>
+          </div>
+
+          {/* Mobile version */}
+          <ProgramMissionCardMobile
+            title={OVERVIEW_DATA.programMission.title}
+            subtitle={OVERVIEW_DATA.programMission.subtitle}
+            description={OVERVIEW_DATA.programMission.description}
           />
         </div>
 

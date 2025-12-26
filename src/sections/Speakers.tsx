@@ -1,12 +1,12 @@
-import Container from '@/components/Container';
-import Carousel from '@/components/Carousel';
-import SpeakerCard from '@/components/SpeakerCard';
-import { SPEAKERS } from '@/constants/speakers';
-import { getSessionsBySpeakerId } from '@/constants/schedule';
-import { useSlideUp, useFadeIn } from '@/lib/gsap';
-import title from '@/assets/sectionTitle/title_section3.svg';
-import titleSm from '@/assets/sectionTitle/title_section3_sm.svg';
-import { useState } from 'react';
+import Container from "@/components/Container";
+import Carousel from "@/components/Carousel";
+import SpeakerCard from "@/components/SpeakerCard";
+import { SPEAKERS } from "@/constants/speakers";
+import { getSessionsBySpeakerId } from "@/constants/schedule";
+import { useSlideUp, useFadeIn } from "@/lib/gsap";
+import title from "@/assets/sectionTitle/title_section3.svg";
+import titleSm from "@/assets/sectionTitle/title_section3_sm.svg";
+import { useState } from "react";
 
 export default function Speakers() {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
@@ -21,10 +21,18 @@ export default function Speakers() {
     delay: 0.5,
   });
 
-  // 스피커를 두 그룹으로 나누기 (6명씩)
-  const midPoint = Math.ceil(SPEAKERS.length / 2);
-  const firstRowSpeakers = SPEAKERS.slice(0, midPoint);
-  const secondRowSpeakers = SPEAKERS.slice(midPoint);
+  // Community Builders와 Heroes 분리
+  const communityBuilders = SPEAKERS.filter(
+    (speaker) => speaker.role === "community-builder"
+  );
+  const heroes = SPEAKERS.filter((speaker) => speaker.role === "hero");
+
+  // Community Builders를 그룹으로 나누기 (4명씩)
+  const speakersPerRow = 4;
+  const cbRows: (typeof SPEAKERS)[] = [];
+  for (let i = 0; i < communityBuilders.length; i += speakersPerRow) {
+    cbRows.push(communityBuilders.slice(i, i + speakersPerRow));
+  }
 
   const handleCardClick = (cardId: string) => {
     // 같은 카드를 클릭하면 토글, 다른 카드를 클릭하면 해당 카드 열기
@@ -34,69 +42,81 @@ export default function Speakers() {
   return (
     <section
       id="speakers"
-      className="py-16 xl:py-20 bg-bg border-t border-b border-[#41424a]">
-      <Container className="flex flex-col gap-8 xl:gap-24">
+      className="py-16 xl:py-20 bg-bg border-t border-b border-[#41424a]"
+    >
+      <Container className="flex flex-col gap-8 xl:gap-10">
         {/* 섹션 제목 */}
         <div className="text-center">
           <img
             className="hidden xl:block"
-            width={'100%'}
-            height={'auto'}
+            width={"100%"}
+            height={"auto"}
             src={title}
             alt="Speakers"
           />
           <img
             className="xl:hidden block"
-            width={'100%'}
-            height={'auto'}
+            width={"100%"}
+            height={"auto"}
             src={titleSm}
             alt="Speakers"
           />
         </div>
 
         {/* 스피커 캐로셀 */}
-        <div
-          ref={carouselRef}
-          className="flex flex-col gap-8 xl:gap-24">
-          {/* 첫 번째 줄 */}
-          <Carousel
-            className="pl-5 xl:pl-[115px] border-t border-b border-zinc-700"
-            itemWidth={332}
-            gap={0}
-            showOverlay={true}>
-            {firstRowSpeakers.map((speaker) => {
-              const sessions = getSessionsBySpeakerId(speaker.id);
-              return (
-                <SpeakerCard
-                  key={speaker.id}
-                  {...speaker}
-                  sessions={sessions}
-                  isActive={activeCardId === speaker.id}
-                  onCardClick={handleCardClick}
-                />
-              );
-            })}
-          </Carousel>
+        <div ref={carouselRef} className="flex flex-col gap-8 xl:gap-10">
+          {/* Community Builders 섹션 */}
+          <div className="flex flex-col gap-8 xl:gap-12">
+            <h3 className="text-title0 text-white text-center">
+              AWS Community Builders
+            </h3>
+            {cbRows.map((rowSpeakers, rowIndex) => (
+              <Carousel
+                key={rowIndex}
+                className="pl-5 xl:pl-0 pr-5 xl:pr-0 xl:justify-center border-t border-b border-zinc-700"
+                itemWidth={300}
+                gap={0}
+                showOverlay={false}
+              >
+                {rowSpeakers.map((speaker) => {
+                  const sessions = getSessionsBySpeakerId(speaker.id);
+                  return (
+                    <SpeakerCard
+                      key={speaker.id}
+                      {...speaker}
+                      sessions={sessions}
+                      isActive={activeCardId === speaker.id}
+                      onCardClick={handleCardClick}
+                    />
+                  );
+                })}
+              </Carousel>
+            ))}
+          </div>
 
-          {/* 두 번째 줄 */}
-          <Carousel
-            className="pl-5 xl:pl-[115px] border-t border-b border-zinc-700"
-            itemWidth={332}
-            gap={0}
-            showOverlay={true}>
-            {secondRowSpeakers.map((speaker) => {
-              const sessions = getSessionsBySpeakerId(speaker.id);
-              return (
-                <SpeakerCard
-                  key={speaker.id}
-                  {...speaker}
-                  sessions={sessions}
-                  isActive={activeCardId === speaker.id}
-                  onCardClick={handleCardClick}
-                />
-              );
-            })}
-          </Carousel>
+          {/* AWS Heroes 섹션 */}
+          <div className="flex flex-col gap-8 xl:gap-12">
+            <h3 className="text-title0 text-white text-center">AWS Heroes</h3>
+            <Carousel
+              className="pl-5 xl:pl-0 pr-5 xl:pr-0 xl:justify-center border-t border-b border-zinc-700"
+              itemWidth={300}
+              gap={0}
+              showOverlay={false}
+            >
+              {heroes.map((speaker) => {
+                const sessions = getSessionsBySpeakerId(speaker.id);
+                return (
+                  <SpeakerCard
+                    key={speaker.id}
+                    {...speaker}
+                    sessions={sessions}
+                    isActive={activeCardId === speaker.id}
+                    onCardClick={handleCardClick}
+                  />
+                );
+              })}
+            </Carousel>
+          </div>
         </div>
       </Container>
     </section>
