@@ -35,13 +35,13 @@ export function SessionModal({
   const getTrackBackground = () => {
     switch (trackId) {
       case "track1":
-        return "backdrop-blur-[10px] border boder-primary bg-gradient-to-br from-[#703fff]/20 to-[#703fff]/10 border-[#703fff]/30";
+        return "backdrop-blur-[10px] border boder-primary bg-violet-900/90 border-violet-600";
       case "track2":
-        return "backdrop-blur-[10px] border boder-secondary bg-gradient-to-br from-[#FF9900]/20 to-[#FF9900]/10 border-[#FF9900]/30";
+        return "backdrop-blur-[10px] border boder-secondary bg-amber-900/90 border-[#FF9900]/30";
       case "track3":
-        return "backdrop-blur-[10px] border boder-stroke bg-gradient-to-br from-white/20 to-white/10 border-white/30";
+        return "backdrop-blur-[10px] border boder-stroke bg-stone-900/0";
       default:
-        return "backdrop-blur-[10px] border boder-stroke bg-gradient-to-br from-white/20 to-white/10 border-white/30";
+        return "border boder-stroke from-white/20 to-white/10 border-white/30";
     }
   };
 

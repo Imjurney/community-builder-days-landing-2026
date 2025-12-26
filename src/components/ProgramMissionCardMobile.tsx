@@ -55,7 +55,7 @@ export default function ProgramMissionCardMobile({
 
       {/* Text content */}
       <div className="absolute inset-0 flex flex-col justify-center px-8 text-white">
-        <p className="text-xs mb-2 fancy-body1">{title}</p>
+        <p className="text-fancy-subtitle1 mb-2">{title}</p>
         <h2 className="text-2xl font-bold leading-tight mb-3 korean-title1">
           {subtitle.split("\n").map((line, index) => (
             <span key={index}>

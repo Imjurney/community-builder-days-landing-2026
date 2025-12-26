@@ -58,10 +58,7 @@ export default function ProgramMissionCard({
         className="absolute inset-0 flex flex-col justify-center px-16 text-white"
         style={{ marginTop: "-25px" }}
       >
-        <p
-          className="text-[28px] mb-2 fancy-title1"
-          style={{ marginBottom: "30px" }}
-        >
+        <p className="text-fancy-title1 mb-2" style={{ marginBottom: "30px" }}>
           {title}
         </p>
         <h2

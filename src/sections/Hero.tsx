@@ -59,8 +59,9 @@ export default function Hero() {
             </div>
             <p className="hero-time text-white">
               {EVENT.hero.dateTime},<br className="xl:hidden" />{" "}
-              {EVENT.hero.location.split(", ")[0]},
-              {EVENT.hero.location.split(", ").slice(1).join(", ")}
+              {EVENT.hero.location.split(", ")[0]},{" "}
+              {EVENT.hero.location.split(", ")[1]},{" "}
+              {EVENT.hero.location.split(", ")[2]}
             </p>
           </div>
 
