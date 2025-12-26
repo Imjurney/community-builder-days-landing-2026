@@ -1,152 +1,70 @@
-import Container from '@/components/Container';
-import { useFadeIn } from '@/lib/gsap';
+import Container from "@/components/Container";
+import ProgramMissionCard from "@/components/ProgramMissionCard";
+import ProgramMissionCardMobile from "@/components/ProgramMissionCardMobile";
+import { useFadeIn } from "@/lib/gsap";
+import { OVERVIEW_DATA } from "@/constants/overview";
 
 export default function Overview() {
-    const contentRef = useFadeIn<HTMLDivElement>({
-        duration: 0.8,
-        delay: 0.2,
-    });
+  const contentRef = useFadeIn<HTMLDivElement>({
+    duration: 0.8,
+    delay: 0.2,
+  });
 
-    // const boxesRef = useStagger<HTMLDivElement>('.overview-box', {
-    //   duration: 0.6,
-    //   delay: 0.5,
-    //   stagger: 0.1,
-    //   from: { opacity: 0, y: 20 },
-    // });
+  // const boxesRef = useStagger<HTMLDivElement>('.overview-box', {
+  //   duration: 0.6,
+  //   delay: 0.5,
+  //   stagger: 0.1,
+  //   from: { opacity: 0, y: 20 },
+  // });
 
-    return (
-        <section
-            id="overview"
-            className="bg-bg   border-t border-b border-brand-stroke">
-            <Container className="py-0 flex flex-col gap-16">
-                <div
-                    ref={contentRef}
-                    className="relative flex flex-col xl:flex-row gap-3 xl:gap-5">
-                    {/* Desktop version - Left side */}
-                    <div className="hidden xl:block w-[801px] h-[416px] relative overflow-hidden flex-shrink-0">
-                        {/* Grid pattern */}
-                        <div className="absolute inset-0">
-                            {/* Vertical lines */}
-                            {Array.from({ length: 26 }).map((_, i) => (
-                                <div
-                                    key={`v-${i}`}
-                                    className="absolute h-full w-[1px] bg-[#41424A]"
-                                    style={{ left: `${32 + i * 32}px` }}
-                                />
-                            ))}
-                            {/* Horizontal lines */}
-                            {Array.from({ length: 14 }).map((_, i) => (
-                                <div
-                                    key={`h-${i}`}
-                                    className="absolute w-full h-[1px] bg-[#41424A]"
-                                    style={{ top: `${31.5 + i * 32}px` }}
-                                />
-                            ))}
-                        </div>
-                        {/* Orange highlight shape */}
-                        <div
-                            className="absolute bg-[#FF9900] opacity-60"
-                            style={{
-                                left: '31.5px',
-                                top: '31px',
-                                width: '673px',
-                                height: '353px',
-                                clipPath: 'polygon(0 0, 289px 0, 289px 64px, 673px 64px, 673px 353px, 0 353px)',
-                            }}
-                        />
-                        {/* Text content */}
-                        <div className="absolute inset-0 flex flex-col justify-center px-16 text-white" style={{ marginTop: '-25px' }}>
-                            <p className="text-[28px] mb-2" style={{ fontFamily: 'Pixelify Sans, sans-serif', marginBottom: '30px' }}>
-                                Program mission
-                            </p>
-                            <h2 className="text-[45px] font-bold leading-tight mb-4" style={{ marginBottom: '35px', fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
-                                AWS Community
-                                <br />
-                                Builders Day Korea는
-                            </h2>
-                            <p className="text-xl leading-relaxed" style={{ fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
-                                커뮤니티 Builder와 Hero가
+  return (
+    <section
+      id="overview"
+      className="bg-bg border-t border-b border-brand-stroke xl:pt-5"
+    >
+      <Container className="py-0 flex flex-col gap-16">
+        <div
+          ref={contentRef}
+          className="relative flex flex-col xl:flex-row gap-3 xl:gap-5"
+        >
+          {/* Desktop version - Left side */}
+          <ProgramMissionCard
+            title={OVERVIEW_DATA.programMission.title}
+            subtitle={OVERVIEW_DATA.programMission.subtitle}
+            description={OVERVIEW_DATA.programMission.description}
+          />
 
-                                각자의 전문 분야에 대한
-                                <br />
-                                세션과 인사이트를 제공하는 행사입니다.
-                            </p>
-                        </div>
-                    </div>
+          {/* Right side - AWS Community Builder Introduction */}
+          <div className="hidden xl:flex flex-col justify-center text-white flex-1 px-8">
+            <h3 className="text-title0 mb-6">
+              {OVERVIEW_DATA.communityBuilder.title}
+            </h3>
+            <div className="space-y-6 text-body1">
+              {OVERVIEW_DATA.communityBuilder.description
+                .split("\n\n")
+                .map((paragraph, index) => (
+                  <p key={index} className="leading-relaxed">
+                    {paragraph.split("\n").map((line, lineIndex) => (
+                      <span key={lineIndex}>
+                        {line}
+                        {lineIndex < paragraph.split("\n").length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
+                ))}
+            </div>
+          </div>
 
-                    {/* Right side - AWS Community Builder Introduction */}
-                    <div className="hidden xl:flex flex-col justify-center text-white flex-1 px-8">
-                        <h3 className="text-[32px] font-bold mb-6" style={{ fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
-                            AWS Community Builder란?
-                        </h3>
-                        <div className="space-y-4 text-lg leading-relaxed" style={{ fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
-                            <p>
-                                AWS Community Builder 프로그램은 AWS에 대한 열정과 지식을 공유하는 기술 커뮤니티 리더들을 위한 글로벌 프로그램입니다.
-                            </p>
-                            <p>
-                                이 프로그램은 AWS 전문가들이 기술 콘텐츠를 작성하고, 네트워킹하며, AWS와 직접 소통할 수 있는 기회를 제공합니다.
-                            </p>
-                            <p>
-                                Community Builder들은 자신의 전문 분야에서 AWS 서비스와 모범 사례를 공유하며, 커뮤니티의 성장과 발전에 기여합니다.
-                            </p>
-                        </div>
-                    </div>
+          {/* Mobile version */}
+          <ProgramMissionCardMobile
+            title={OVERVIEW_DATA.programMission.title}
+            subtitle={OVERVIEW_DATA.programMission.subtitle}
+            description={OVERVIEW_DATA.programMission.description}
+          />
+        </div>
 
-                    {/* Mobile version */}
-                    <div className="xl:hidden w-full h-[320px] relative overflow-hidden">
-                        {/* Grid pattern */}
-                        <div className="absolute inset-0">
-                            {/* Vertical lines */}
-                            {Array.from({ length: 12 }).map((_, i) => (
-                                <div
-                                    key={`v-${i}`}
-                                    className="absolute h-full w-[1px] bg-[#41424A]"
-                                    style={{ left: `${32 + i * 32}px` }}
-                                />
-                            ))}
-                            {/* Horizontal lines */}
-                            {Array.from({ length: 11 }).map((_, i) => (
-                                <div
-                                    key={`h-${i}`}
-                                    className="absolute w-full h-[1px] bg-[#41424A]"
-                                    style={{ top: `${31.5 + i * 32}px` }}
-                                />
-                            ))}
-                        </div>
-                        {/* Orange highlight shape */}
-                        <div
-                            className="absolute bg-[#FF9900] opacity-60"
-                            style={{
-                                left: '0',
-                                top: '32px',
-                                width: '360px',
-                                height: '255px',
-                                clipPath: 'polygon(0 0, 287.5px 0, 287.5px 64px, 360px 64px, 360px 255px, 0 255px)',
-                            }}
-                        />
-                        {/* Text content */}
-                        <div className="absolute inset-0 flex flex-col justify-center px-8 text-white">
-                            <p className="text-xs mb-2" style={{ fontFamily: 'Pixelify Sans, sans-serif' }}>
-                                Program mission
-                            </p>
-                            <h2 className="text-2xl font-bold leading-tight mb-3" style={{ fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
-                                AWS Community
-                                <br />
-                                Builder's Day Korea 는
-                            </h2>
-                            <p className="text-base leading-relaxed" style={{ fontFamily: 'Apple SD Gothic Neo, sans-serif' }}>
-                                커뮤니티 Builder와 Hero가
-                                <br />
-                                각자의 전문 분야에 대한
-                                <br />
-                                세션과 인사이트를 제공하는 행사입니다.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Overview 박스들 */}
-                {/* <div
+        {/* Overview 박스들 */}
+        {/* <div
           ref={boxesRef}
           className="grid grid-cols-2 lg:grid-cols-4 border border-brand-stroke">
           {OVERVIEW_ITEMS.map((item, index) => (
@@ -162,7 +80,7 @@ export default function Overview() {
             </div>
           ))}
         </div> */}
-            </Container>
-        </section>
-    );
+      </Container>
+    </section>
+  );
 }
