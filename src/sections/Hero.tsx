@@ -1,7 +1,7 @@
-import Container from '@/components/Container';
-import { useSlideUp, useFadeIn } from '@/lib/gsap';
-import { EVENT } from '@/constants/event';
-import clockIcon from '@/assets/icons/clock.svg';
+import Container from "@/components/Container";
+import { useSlideUp, useFadeIn } from "@/lib/gsap";
+import { EVENT } from "@/constants/event";
+import clockIcon from "@/assets/icons/clock.svg";
 
 export default function Hero() {
     // GSAP 애니메이션 refs
@@ -15,19 +15,20 @@ export default function Hero() {
         delay: 0.6,
     });
 
-    return (
-        <section
-            id="top"
-            className="relative h-2/3 overflow-hidden -mt-[88px] pt-[38px] xl:h-[60svh]">
-            {/* 데스크톱 배경 이미지 - 최적화된 로딩 */}
-            <div className="absolute inset-0 w-full h-4/5">
-                <img
-                    src="/mainBackground.svg"
-                    alt=""
-                    className="w-full object-contain hidden xl:block"
-                    loading="eager"
-                    decoding="async"
-                />
+  return (
+    <section
+      id="top"
+      className="relative h-2/3 overflow-hidden -mt-[88px] pt-[88px] xl:h-[70svh]"
+    >
+      {/* 데스크톱 배경 이미지 - 최적화된 로딩 */}
+      <div className="absolute inset-0 w-full h-4/5">
+        <img
+          src="/mainBackground.svg"
+          alt=""
+          className="w-full object-contain hidden xl:block"
+          loading="eager"
+          decoding="async"
+        />
 
                 <img
                     src="/mainBackground_sm.svg"
@@ -38,6 +39,18 @@ export default function Hero() {
                 />
             </div>
 
+      {/* 메인 콘텐츠 */}
+      <Container className="relative z-10 ml-5 pb-8 xl:ml-14 flex items-start justify-start h-42/5 pt-6 xl:pt-32">
+        <div className="flex flex-col gap-4 xl:gap-8 items-start">
+          {/* 메인 타이틀 */}
+          <div ref={titleRef} className="hero-title text-white">
+            <p className="mb-0">
+              {EVENT.hero.title.line1.split(" ")[0]}{" "}
+              <br className="xl:hidden" />
+              {EVENT.hero.title.line1.split(" ").slice(1).join(" ")}
+            </p>
+            <p className="mb-0">{EVENT.hero.title.line2}</p>
+          </div>
             {/* 메인 콘텐츠 */}
             <Container className="relative z-10 ml-5 pb-8 xl:ml-14 flex items-start justify-start h-42/5 pt-6 xl:pt-32">
                 <div className="flex flex-col gap-4 xl:gap-8 items-start">
