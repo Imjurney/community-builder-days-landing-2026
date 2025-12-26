@@ -35,13 +35,13 @@ export function SessionModal({
   const getTrackBackground = () => {
     switch (trackId) {
       case "track1":
-        return "backdrop-blur-[10px] border boder-primary bg-violet-900/90 border-violet-600";
+        return "backdrop-blur-[10px] border boder-primary bg-violet-900/85 border-violet-600";
       case "track2":
-        return "backdrop-blur-[10px] border boder-secondary bg-amber-900/90 border-[#FF9900]/30";
+        return "backdrop-blur-[10px] border boder-secondary bg-amber-900/85 border-[#FF9900]/30";
       case "track3":
-        return "backdrop-blur-[10px] border boder-stroke bg-stone-900/0";
+        return "backdrop-blur-[10px] border boder-stroke bg-stone-900/90";
       default:
-        return "border boder-stroke from-white/20 to-white/10 border-white/30";
+        return "backdrop-blur-[10px] border boder-stroke bg-stone-900/90";
     }
   };
 
@@ -53,7 +53,7 @@ export function SessionModal({
       case "track2":
         return "border-[#FF9900]/50";
       case "track3":
-        return "border-brand-stroke/50";
+        return "border-stone-500";
       default:
         return "border-brand-stroke/50";
     }

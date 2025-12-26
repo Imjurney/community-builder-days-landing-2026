@@ -98,7 +98,7 @@ export const SPEAKERS: Speaker[] = [
     id: "speaker-1",
     name: "소성운",
     org: "AI",
-    bio: "-",
+    bio: "AWS 데이터 모임 운영을 맡고 있고 AWS AI Hero로 활동하고 있습니다.",
     profileImage: yanso,
     role: "hero",
   },

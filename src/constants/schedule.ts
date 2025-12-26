@@ -136,10 +136,10 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
       },
       track3: {
         kind: "session",
-        title: "Hero 리인벤트 Recap: Nova 2, Nova Forge + AI",
+        title: "Hero 리인벤트 Recap: 같이 짚어보는 2026 AWS AI 서비스와 트렌드",
         speakerId: "speaker-1",
         description:
-          "AWS re:Invent에서 발표된 Nova 2, Nova Forge 및 AI 관련 최신 기술과 서비스에 대한 심층 분석을 제공합니다.",
+          "리인벤트에서 발표한 2026년 AI 서비스와 트렌드를 소개합니다. 새롭게 선보인 Nova2 모델부터 Bedrock을 활용한 AI Agent 개발을 위한 신규 기능들을 집중적으로 다룹니다. 또한 AWS커뮤니티 일원으로서 리인벤트 참석경험과 의미를 나눌 예정입니다.",
       },
     },
   },
