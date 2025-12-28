@@ -7,35 +7,35 @@ export const SCHEDULE_TRACKS: Array<{
   label: string;
   bottomColor: string;
 }> = [
-  { id: "track1", label: "Track 1", bottomColor: "bg-[var(--track-1)]" },
-  { id: "track2", label: "Track 2", bottomColor: "bg-[var(--track-2)]" },
-  { id: "track3", label: "Track 3", bottomColor: "bg-[var(--track-3)]" },
-];
+    { id: "track1", label: "Track 1", bottomColor: "bg-[var(--track-1)]" },
+    { id: "track2", label: "Track 2", bottomColor: "bg-[var(--track-2)]" },
+    { id: "track3", label: "Track 3", bottomColor: "bg-[var(--track-3)]" },
+  ];
 
 export type ScheduleCell =
   | {
-      kind: "session";
-      title: string;
-      speakerId: string;
-      description?: string;
-    }
+    kind: "session";
+    title: string;
+    speakerId: string;
+    description?: string;
+  }
   | { kind: "label"; title: string }
   | { kind: "empty" };
 
 export type ScheduleRow =
   | {
-      time: string;
-      full: {
-        title: string;
-        tone?: "muted" | "brand" | "break";
-        speakerId?: string;
-        description?: string;
-      };
-    }
-  | {
-      time: string;
-      cells: Record<ScheduleTrackId, ScheduleCell>;
+    time: string;
+    full: {
+      title: string;
+      tone?: "muted" | "brand" | "break";
+      speakerId?: string;
+      description?: string;
     };
+  }
+  | {
+    time: string;
+    cells: Record<ScheduleTrackId, ScheduleCell>;
+  };
 
 // Helper function to get speaker by ID
 export function getSpeakerById(speakerId: string) {
@@ -71,10 +71,9 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
     full: { title: "입장 및 등록" },
   },
   {
-    time: "13:30 ~ 13:50",
+    time: "13:00 ~ 13:50",
     full: {
-      title:
-        "키노트 - 우리는 왜 커뮤니티에 남는가 (부제:EC2는 사람을 키우지 않는다)",
+      title: "소개 및 기조 연설",
       tone: "muted",
       speakerId: "speaker-4",
       description:
@@ -86,71 +85,7 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
     full: { title: "휴식" },
   },
   {
-    time: "14:10 ~ 14:40",
-    cells: {
-      track1: {
-        kind: "session",
-        title: "있다가 없으면 아쉬운 AWS",
-        speakerId: "speaker-13",
-        description:
-          "4년간 AWS를 사용하다가 AWS가 없는 회사로 이직해서 겪은 일들을 기반으로 클라우드 인프라의 장점을 역설 해보고자 합니다.",
-      },
-      track2: {
-        kind: "session",
-        title:
-          "OpenSearch 를 사용한 유사 데이터 검색 및 매칭 시스템 구현 방법 소개",
-        speakerId: "speaker-5",
-        description:
-          "OpenSearch의 유사도와 가중치를 활용한 검색의 기본을 살펴보고, 하이브리드 검색과 AI 기술을 접목하여 매칭 시스템을 구현했던 프로젝트 경험을 공유합니다. 또한 그 과정에서 마주한 기술적 과제와 이를 해결한 방법에 대해서도 함께 소개합니다.",
-      },
-      track3: {
-        kind: "session",
-        title:
-          "Hero 리인벤트 Recap: 운영 효율과 비용, 두 마리 토끼 잡기 (DevOps Agent, Security Agent, DB SP)",
-        speakerId: "speaker-2",
-        description:
-          "re:Invent에서 발표된 신규 서비스 중 운영(Ops)과 비용 효율화에 초점을 맞춘 핵심 업데이트를 소개합니다. DevOps 생산성을 높여줄 도구들과 새로운 Security Agent, 그리고 많은 분이 기다리셨을 Database Savings Plan의 세부 내용을 실무 관점에서 짚어드립니다.",
-      },
-    },
-  },
-  {
-    time: "14:40 ~ 14:50",
-    full: { title: "휴식" },
-  },
-  {
-    time: "14:50 ~ 15:20",
-    cells: {
-      track1: {
-        kind: "session",
-        title: "Amazon Bedrock으로 알아보는 강화학습 기반 파인튜닝",
-        speakerId: "speaker-11",
-        description:
-          "Amazon Bedrock도 이제는 강화학습 기반의 파인튜닝을 지원하기 시작했습니다. 이에, 기존의 SFT와 달리 강화학습이 각광받는 이유를 소개하고, 실제 Bedrock에서의 RFT 진행 과정을 함께 보는 시간을 가지고자 합니다.",
-      },
-      track2: {
-        kind: "session",
-        title: "Operations as Code: AWS 환경을 자동화하는 우아한 방법",
-        speakerId: "speaker-6",
-        description:
-          "클라우드 규모가 커질수록 수동 운영은 장애의 원인이 됩니다. SSM 핵심 기능을 통해 운영을 코드화(Code)하는 전략을 소개합니다. Hybrid Activation과 Fleet Manager로 IDC와 AWS의 경계를 허물어 통합 관리 환경을 구축하고, State Manager로 인프라의 일관성을 강제합니다. 여기에 Automation을 더해 CalendarOps와 같이 자동화된 워크플로우로 전환하는 법을 다룹니다.",
-      },
-      track3: {
-        kind: "session",
-        title: "Hero 리인벤트 Recap: 같이 짚어보는 2026 AWS AI 서비스와 트렌드",
-        speakerId: "speaker-1",
-        description:
-          "리인벤트에서 발표한 2026년 AI 서비스와 트렌드를 소개합니다. 새롭게 선보인 Nova2 모델부터 Bedrock을 활용한 AI Agent 개발을 위한 신규 기능들을 집중적으로 다룹니다. 또한 AWS커뮤니티 일원으로서 리인벤트 참석경험과 의미를 나눌 예정입니다.",
-      },
-    },
-  },
-  {
-    time: "15:20 ~ 16:00",
-    full: {
-      title: "긴 휴식 : 간식 및 부스",
-    },
-  },
-  {
-    time: "16:00 ~ 16:30",
+    time: "14:00 ~ 14:35",
     cells: {
       track1: {
         kind: "session",
@@ -161,26 +96,26 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
       },
       track2: {
         kind: "session",
-        title: "AWS CodeArtifact를 이용해 사내 패키지 레지스트리 만들기",
-        speakerId: "speaker-7",
+        title: "Amazon Kiro를 활용해서 AWS 공부를 해보자!",
+        speakerId: "speaker-9",
         description:
-          "AWS CodeArtifact를 사용하여 사내 패키지를 관리할 때 다양한 환경에서 패키지를 설치하고 빌드하는 과정은 불편한 편입니다. GitHub Actions, Docker를 사용하는 환경에서도 안전하고 편리하게 패키지를 설치, 배포할 수 있는 환경을 제공하기 위해 고려할 점에 대해 공유드립니다.",
+          "Amazon Kiro를 이용하여 학생들의 학습을 위한 가이드 개발을 어떻게 하였는지, 학습을 위한 플랫폼 개발을 어떻게 하였는지를 공유합니다.",
       },
       track3: {
         kind: "session",
-        title: "오픈소스를 활용한 AWS 인프라 취약점 진단",
-        speakerId: "speaker-10",
+        title: "있다가 없으면 아쉬운 AWS",
+        speakerId: "speaker-13",
         description:
-          "AWS 인프라 진단을 오픈소스를 활용하여 체크할 수 있는 방법에 대하여 공유합니다.",
+          "4년간 AWS를 사용하다가 AWS가 없는 회사로 이직해서 겪은 일들을 기반으로 클라우드 인프라의 장점을 역설 해보고자 합니다.",
       },
     },
   },
   {
-    time: "16:30 ~ 16:40",
+    time: "14:35 ~ 14:45",
     full: { title: "휴식" },
   },
   {
-    time: "16:40 ~ 17:10",
+    time: "14:45 ~ 15:20",
     cells: {
       track1: {
         kind: "session",
@@ -192,26 +127,90 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
       },
       track2: {
         kind: "session",
-        title: "AWS Kiro와 Q를 이용해 AWS 공부를 해보자!",
-        speakerId: "speaker-9",
+        title:
+          "Hero 리인벤트 Recap: 운영 효율과 비용, 두 마리 토끼 잡기 (DevOps Agent, Security Agent, RDS Savings Plan)",
+        speakerId: "speaker-2",
         description:
-          "AWS Amazon Q와 Kiro를 이용하여 학생들의 학습을 위한 가이드 개발을 어떻게 하였는지, 학습을 위한 플랫폼 개발을 어떻게 하였는지를 공유합니다.",
+          "re:Invent에서 발표된 신규 서비스 중 운영(Ops)과 비용 효율화에 초점을 맞춘 핵심 업데이트를 소개합니다. DevOps 생산성을 높여줄 도구들과 새로운 Security Agent, 그리고 많은 분이 기다리셨을 RDS Savings Plan의 세부 내용을 실무 관점에서 짚어드립니다.",
       },
       track3: {
         kind: "session",
-        title: "초보자를 위한 Opensource 기반 LLM 모델 구축 방법",
-        speakerId: "speaker-8",
+        title: "Hero 리인벤트 Recap: 같이 짚어보는 2026 AWS AI 서비스와 트렌드 (Nova 2, Nova Forge + AI)",
+        speakerId: "speaker-1",
         description:
-          "AI관련 경험이 거의 없는 Devops 엔지니어가 Opensource로 제공하는 LLM 모델을 AWS 환경에서 어떻게 구축하였는지 EC2또는 Bedrock 서비스를 기준의 Architecture 패턴을 각각 소개하고, 각 패턴별 특징을 공유합니다. (GPT-OSS 모델로 예시)",
+          "리인벤트에서 발표한 2026년 AI 서비스와 트렌드를 소개합니다. 새롭게 선보인 Nova2 모델부터 Bedrock을 활용한 AI Agent 개발을 위한 신규 기능들을 집중적으로 다룹니다. 또한 AWS커뮤니티 일원으로서 리인벤트 참석경험과 의미를 나눌 예정입니다.",
       },
     },
   },
   {
-    time: "17:10 ~ 17:40",
+    time: "15:20 ~ 16:00",
+    full: {
+      title: "긴 휴식 : 간식 & CB Hub",
+    },
+  },
+  {
+    time: "16:00 ~ 16:35",
+    cells: {
+      track1: {
+        kind: "session",
+        title: "Amazon Bedrock으로 알아보는 강화학습 기반 파인튜닝",
+        speakerId: "speaker-11",
+        description:
+          "Amazon Bedrock도 이제는 강화학습 기반의 파인튜닝을 지원하기 시작했습니다. 이에, 기존의 SFT와 달리 강화학습이 각광받는 이유를 소개하고, 실제 Bedrock에서의 RFT 진행 과정을 함께 보는 시간을 가지고자 합니다.",
+      },
+      track2: {
+        kind: "session",
+        title: "오픈소스를 활용한 AWS 인프라 취약점 진단",
+        speakerId: "speaker-10",
+        description:
+          "AWS 인프라 진단을 오픈소스를 활용하여 체크할 수 있는 방법에 대하여 공유합니다.",
+      },
+      track3: {
+        kind: "session",
+        title: "Operations as Code: AWS 환경을 자동화하는 우아한 방법",
+        speakerId: "speaker-6",
+        description:
+          "클라우드 규모가 커질수록 수동 운영은 장애의 원인이 됩니다. SSM 핵심 기능을 통해 운영을 코드화(Code)하는 전략을 소개합니다. Hybrid Activation과 Fleet Manager로 IDC와 AWS의 경계를 허물어 통합 관리 환경을 구축하고, State Manager로 인프라의 일관성을 강제합니다. 여기에 Automation을 더해 CalendarOps와 같이 자동화된 워크플로우로 전환하는 법을 다룹니다.",
+      },
+    },
+  },
+  {
+    time: "16:35 ~ 16:45",
+    full: { title: "휴식" },
+  },
+  {
+    time: "16:45 ~ 17:20",
+    cells: {
+      track1: {
+        kind: "session",
+        title:
+          "OpenSearch 를 사용한 유사 데이터 검색 및 매칭 시스템 구현 방법 소개",
+        speakerId: "speaker-5",
+        description:
+          "OpenSearch의 유사도와 가중치를 활용한 검색의 기본을 살펴보고, 하이브리드 검색과 AI 기술을 접목하여 매칭 시스템을 구현했던 프로젝트 경험을 공유합니다. 또한 그 과정에서 마주한 기술적 과제와 이를 해결한 방법에 대해서도 함께 소개합니다.",
+      },
+      track2: {
+        kind: "session",
+        title: "AWS CodeArtifact를 이용해 사내 패키지 레지스트리 만들기",
+        speakerId: "speaker-7",
+        description:
+          "AWS CodeArtifact를 사용하여 사내 패키지를 관리할 때 다양한 환경에서 패키지를 설치하고 빌드하는 과정은 불편한 편입니다. GitHub Actions, Docker를 사용하는 환경에서도 안전하고 편리하게 패키지를 설치, 배포할 수 있는 환경을 제공하기 위해 고려할 점에 대해 공유드립니다.",
+      },
+      track3: {
+        kind: "session",
+        title: "초보자를 위한 Opensource 기반 LLM 구축 방법",
+        speakerId: "speaker-8",
+        description:
+          "AI관련 경험이 거의 없는 Devops 엔지니어가 Opensource로 제공하는 LLM을 AWS 환경에서 어떻게 구축하였는지 EC2또는 Bedrock 서비스를 기준의 Architecture 패턴을 각각 소개하고, 각 패턴별 특징을 공유합니다. (GPT-OSS 모델로 예시)",
+      },
+    },
+  },
+  {
+    time: "17:20 ~ 17:50",
     full: { title: "퀴즈 세션" },
   },
   {
-    time: "17:40 ~ 18:00",
+    time: "17:50 ~ 18:00",
     full: { title: "마무리" },
   },
 ];

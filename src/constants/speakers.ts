@@ -66,7 +66,7 @@ export const SPEAKERS: Speaker[] = [
     id: "speaker-10",
     name: "이지영",
     org: "Security",
-    bio: "AWS 보안 소모임 오거나이저를 담당하고 있고, 놀유니버스에서 보안 아키텍트로 근무하고 있습니다.",
+    bio: "AWS 보안 소모임 오거나이저를 담당하고 있고, 보안 아키텍트로 근무하고 있습니다.",
     profileImage: jiyoung_lee,
     role: "community-builder",
   },
