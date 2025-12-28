@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 interface SessionModalProps {
   isOpen: boolean;
@@ -30,32 +30,33 @@ export function SessionModal({
     top: -9999,
   });
   const [isPositioned, setIsPositioned] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   // 트랙별 배경색 설정
   const getTrackBackground = () => {
     switch (trackId) {
-      case "track1":
-        return "backdrop-blur-[10px] border boder-primary bg-violet-900/85 border-violet-600";
-      case "track2":
-        return "backdrop-blur-[10px] border boder-secondary bg-amber-900/85 border-[#FF9900]/30";
-      case "track3":
-        return "backdrop-blur-[10px] border boder-stroke bg-stone-900/90";
+      case 'track1':
+        return 'backdrop-blur-[10px] border boder-primary bg-violet-900/85 border-violet-600';
+      case 'track2':
+        return 'backdrop-blur-[10px] border boder-secondary bg-amber-900/85 border-[#FF9900]/30';
+      case 'track3':
+        return 'backdrop-blur-[10px] border boder-stroke bg-stone-900/90';
       default:
-        return "backdrop-blur-[10px] border boder-stroke bg-stone-900/90";
+        return 'backdrop-blur-[10px] border boder-stroke bg-stone-900/90';
     }
   };
 
   // 트랙별 테두리 색상 설정
   const getTrackBorderColor = () => {
     switch (trackId) {
-      case "track1":
-        return "border-[#703fff]/50";
-      case "track2":
-        return "border-[#FF9900]/50";
-      case "track3":
-        return "border-stone-500";
+      case 'track1':
+        return 'border-[#703fff]/50';
+      case 'track2':
+        return 'border-[#FF9900]/50';
+      case 'track3':
+        return 'border-stone-500';
       default:
-        return "border-brand-stroke/50";
+        return 'border-brand-stroke/50';
     }
   };
 
@@ -118,28 +119,30 @@ export function SessionModal({
       <div
         ref={modalRef}
         className={cn(
-          "fixed z-50 w-[min(480px,calc(100vw-40px))] max-h-[400px] overflow-y-auto justify-start",
+          'fixed z-50 w-[min(480px,calc(100vw-40px))] max-h-[400px] overflow-y-auto justify-start pointer-events-none',
           getTrackBackground(),
-          "rounded-xl shadow-2xl",
-          "transition-opacity duration-150",
-          isPositioned ? "opacity-100" : "opacity-0"
+          'rounded-xl shadow-2xl',
+          'transition-opacity duration-150',
+          isPositioned ? 'opacity-100' : 'opacity-0'
         )}
         style={{
           left: `${modalPosition.left}px`,
           top: `${modalPosition.top}px`,
         }}
-        onClick={(e) => e.stopPropagation()}
-      >
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => {
+          setIsHovering(false);
+          onClose();
+        }}>
         {/* Content */}
-        <div className="p-4">
+        <div className="p-4 pointer-events-auto">
           {/* Speaker info */}
           {speaker && (
             <div
               className={cn(
-                "flex items-center gap-3 mb-3 pb-3 border-b",
+                'flex items-center gap-3 mb-3 pb-3 border-b',
                 getTrackBorderColor()
-              )}
-            >
+              )}>
               <img
                 src={speaker.profileImage}
                 alt={`${speaker.name} 프로필`}

@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 interface SessionBottomSheetProps {
   isOpen: boolean;
@@ -29,42 +29,42 @@ export function SessionBottomSheet({
   // 트랙별 배경색 설정
   const getTrackBackground = () => {
     switch (trackId) {
-      case "track1":
-        return "backdrop-blur-[10px] border border-primary bg-gradient-to-br from-[#703fff]/20 to-[#703fff]/10 border-[#703fff]/30";
-      case "track2":
-        return "backdrop-blur-[10px] border border-secondary bg-gradient-to-br from-[#FF9900]/20 to-[#FF9900]/10 border-[#FF9900]/30";
-      case "track3":
-        return "backdrop-blur-[10px] border border-stroke bg-gradient-to-br from-white/20 to-white/10 border-white/30";
+      case 'track1':
+        return 'backdrop-blur-[10px] border border-primary bg-gradient-to-br from-[#703fff]/20 to-[#703fff]/10 border-[#703fff]/30';
+      case 'track2':
+        return 'backdrop-blur-[10px] border border-secondary bg-gradient-to-br from-[#FF9900]/20 to-[#FF9900]/10 border-[#FF9900]/30';
+      case 'track3':
+        return 'backdrop-blur-[10px] border border-stroke bg-gradient-to-br from-white/20 to-white/10 border-white/30';
       default:
-        return "backdrop-blur-[10px] border border-stroke bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1e] border-brand-stroke";
+        return 'backdrop-blur-[10px] border border-stroke bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1e] border-brand-stroke';
     }
   };
 
   // 트랙별 테두리 색상 설정
   const getTrackBorderColor = () => {
     switch (trackId) {
-      case "track1":
-        return "border-[#703fff]/50";
-      case "track2":
-        return "border-[#FF9900]/50";
-      case "track3":
-        return "border-white/50";
+      case 'track1':
+        return 'border-[#703fff]/50';
+      case 'track2':
+        return 'border-[#FF9900]/50';
+      case 'track3':
+        return 'border-white/50';
       default:
-        return "border-brand-stroke/50";
+        return 'border-brand-stroke/50';
     }
   };
 
   // 트랙별 핸들 색상 설정
   const getTrackHandleColor = () => {
     switch (trackId) {
-      case "track1":
-        return "bg-[#703fff]/60";
-      case "track2":
-        return "bg-[#FF9900]/60";
-      case "track3":
-        return "bg-white/60";
+      case 'track1':
+        return 'bg-[#703fff]/60';
+      case 'track2':
+        return 'bg-[#FF9900]/60';
+      case 'track3':
+        return 'bg-white/60';
       default:
-        return "bg-white/40";
+        return 'bg-white/40';
     }
   };
 
@@ -95,19 +95,24 @@ export function SessionBottomSheet({
   // ESC 키로 닫기
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
+      if (e.key === 'Escape' && isOpen) {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
+      document.addEventListener('keydown', handleEscape);
+      // 모바일에서만 스크롤 막기 (1240px 미만)
+      if (window.innerWidth < 1240) {
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
+      document.removeEventListener('keydown', handleEscape);
+      if (window.innerWidth < 1240) {
+        document.body.style.overflow = 'unset';
+      }
     };
   }, [isOpen, onClose]);
 
@@ -118,8 +123,8 @@ export function SessionBottomSheet({
       {/* Backdrop */}
       <div
         className={cn(
-          "fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-500 ease-out",
-          isAnimating ? "opacity-100" : "opacity-0"
+          'fixed inset-0 z-40 bg-black/60 backdrop-blur-sm transition-opacity duration-500 ease-out',
+          isAnimating ? 'opacity-100' : 'opacity-0'
         )}
         onClick={onClose}
       />
@@ -128,19 +133,18 @@ export function SessionBottomSheet({
       <div
         ref={sheetRef}
         className={cn(
-          "fixed bottom-0 left-1/2 z-50 max-h-[80vh] overflow-hidden w-full max-w-[430px]",
-          "rounded-t-2xl shadow-2xl -translate-x-1/2",
+          'fixed bottom-0 left-1/2 z-50 max-h-[80vh] overflow-hidden w-full max-w-[430px]',
+          'rounded-t-2xl shadow-2xl -translate-x-1/2',
           getTrackBackground(),
-          "transform transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          'transform transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]',
           isAnimating
-            ? "translate-y-0 opacity-100 scale-100"
-            : "translate-y-full opacity-0 scale-95"
+            ? 'translate-y-0 opacity-100 scale-100'
+            : 'translate-y-full opacity-0 scale-95'
         )}
-        onClick={(e) => e.stopPropagation()}
-      >
+        onClick={(e) => e.stopPropagation()}>
         {/* Handle */}
         <div className="flex justify-center pt-3 pb-2">
-          <div className={cn("w-10 h-1 rounded-full", getTrackHandleColor())} />
+          <div className={cn('w-10 h-1 rounded-full', getTrackHandleColor())} />
         </div>
 
         {/* Content */}
@@ -149,10 +153,9 @@ export function SessionBottomSheet({
           {speaker && (
             <div
               className={cn(
-                "flex items-center gap-3 mb-4 pb-4 border-b",
+                'flex items-center gap-3 mb-4 pb-4 border-b',
                 getTrackBorderColor()
-              )}
-            >
+              )}>
               <img
                 src={speaker.profileImage}
                 alt={`${speaker.name} 프로필`}
