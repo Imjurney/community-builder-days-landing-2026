@@ -1,41 +1,41 @@
-import { SPEAKERS } from './speakers';
+import { SPEAKERS } from "./speakers";
 
-export type ScheduleTrackId = 'track1' | 'track2' | 'track3';
+export type ScheduleTrackId = "track1" | "track2" | "track3";
 
 export const SCHEDULE_TRACKS: Array<{
   id: ScheduleTrackId;
   label: string;
   bottomColor: string;
 }> = [
-    { id: "track1", label: "Track 1", bottomColor: "bg-[var(--track-1)]" },
-    { id: "track2", label: "Track 2", bottomColor: "bg-[var(--track-2)]" },
-    { id: "track3", label: "Track 3", bottomColor: "bg-[var(--track-3)]" },
-  ];
+  { id: "track1", label: "Track 1", bottomColor: "bg-[var(--track-1)]" },
+  { id: "track2", label: "Track 2", bottomColor: "bg-[var(--track-2)]" },
+  { id: "track3", label: "Track 3", bottomColor: "bg-[var(--track-3)]" },
+];
 
 export type ScheduleCell =
   | {
-    kind: "session";
-    title: string;
-    speakerId: string;
-    description?: string;
-  }
+      kind: "session";
+      title: string;
+      speakerId: string;
+      description?: string;
+    }
   | { kind: "label"; title: string }
   | { kind: "empty" };
 
 export type ScheduleRow =
   | {
-    time: string;
-    full: {
-      title: string;
-      tone?: "muted" | "brand" | "break";
-      speakerId?: string;
-      description?: string;
-    };
-  }
+      time: string;
+      full: {
+        title: string;
+        tone?: "muted" | "brand" | "break";
+        speakerId?: string;
+        description?: string;
+      };
+    }
   | {
-    time: string;
-    cells: Record<ScheduleTrackId, ScheduleCell>;
-  };
+      time: string;
+      cells: Record<ScheduleTrackId, ScheduleCell>;
+    };
 
 // Helper function to get speaker by ID
 export function getSpeakerById(speakerId: string) {
@@ -47,7 +47,7 @@ export function getSessionsBySpeakerId(speakerId: string): string[] {
   const sessions: string[] = [];
 
   SCHEDULE_ROWS.forEach((row) => {
-    if ('full' in row) {
+    if ("full" in row) {
       // full 타입에서 스피커 확인
       if (row.full.speakerId === speakerId) {
         sessions.push(row.full.title);
@@ -55,7 +55,7 @@ export function getSessionsBySpeakerId(speakerId: string): string[] {
     } else {
       // cells 타입에서 스피커 확인
       Object.values(row.cells).forEach((cell) => {
-        if (cell.kind === 'session' && cell.speakerId === speakerId) {
+        if (cell.kind === "session" && cell.speakerId === speakerId) {
           sessions.push(cell.title);
         }
       });
@@ -67,8 +67,8 @@ export function getSessionsBySpeakerId(speakerId: string): string[] {
 
 export const SCHEDULE_ROWS: ScheduleRow[] = [
   {
-    time: '12:30 ~ 13:00',
-    full: { title: '입장 및 등록' },
+    time: "12:30 ~ 13:00",
+    full: { title: "입장 및 등록" },
   },
   {
     time: "13:00 ~ 13:50",
@@ -77,22 +77,22 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
       tone: "muted",
       speakerId: "speaker-4",
       description:
-        'AWS 커뮤니티에 참여하는 의미와 가치에 대한 키노트 세션입니다.',
+        "AWS 커뮤니티에 참여하는 의미와 가치에 대한 키노트 세션입니다.",
     },
   },
   {
-    time: '13:50 ~ 14:00',
-    full: { title: '휴식' },
+    time: "13:50 ~ 14:00",
+    full: { title: "휴식" },
   },
   {
     time: "14:00 ~ 14:35",
     cells: {
       track1: {
-        kind: 'session',
-        title: 'TPM에 대해 알려드립니다. (TPM이 AWS Community를 활용한 방법)',
-        speakerId: 'speaker-12',
+        kind: "session",
+        title: "TPM에 대해 알려드립니다.(엔지니어의 커리어 고민)",
+        speakerId: "speaker-12",
         description:
-          '꽤 긴 시간 AWS를 지켜봐왔던 입장에서 비개발자 직군인 TPM으로 전향하며 어떻게 TPM으로 살아왔는지, TPM에 대한 소개와 AWS Community를 활용한 이야기를 가볍게 전해보고자 합니다.',
+          "꽤 긴 시간 AWS를 지켜봐왔던 입장에서 비개발자 직군인 TPM으로 전향하며 어떻게 TPM으로 살아왔는지, TPM에 대한 소개와 엔지니어 출신으로써의 강점, 커리어에 대한 이야기를 해보고자 합니다.",
       },
       track2: {
         kind: "session",
@@ -118,12 +118,12 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
     time: "14:45 ~ 15:20",
     cells: {
       track1: {
-        kind: 'session',
+        kind: "session",
         title:
-          'Hero 리인벤트 recap: AWS Lambda Durable Function & Lambda Managed Instance',
-        speakerId: 'speaker-3',
+          "Hero 리인벤트 recap: AWS Lambda Durable Function & Lambda Managed Instance",
+        speakerId: "speaker-3",
         description:
-          'AWS re:Invent에서 발표된 Lambda Durable Function과 Lambda Managed Instance의 새로운 기능과 활용 사례를 공유합니다.',
+          "AWS re:Invent에서 발표된 Lambda Durable Function과 Lambda Managed Instance의 새로운 기능과 활용 사례를 공유합니다.",
       },
       track2: {
         kind: "session",
@@ -135,7 +135,8 @@ export const SCHEDULE_ROWS: ScheduleRow[] = [
       },
       track3: {
         kind: "session",
-        title: "Hero 리인벤트 Recap: 같이 짚어보는 2026 AWS AI 서비스와 트렌드 (Nova 2, Nova Forge + AI)",
+        title:
+          "Hero 리인벤트 Recap: 같이 짚어보는 2026 AWS AI 서비스와 트렌드 (Nova 2, Nova Forge + AI)",
         speakerId: "speaker-1",
         description:
           "리인벤트에서 발표한 2026년 AI 서비스와 트렌드를 소개합니다. 새롭게 선보인 Nova2 모델부터 Bedrock을 활용한 AI Agent 개발을 위한 신규 기능들을 집중적으로 다룹니다. 또한 AWS커뮤니티 일원으로서 리인벤트 참석경험과 의미를 나눌 예정입니다.",
